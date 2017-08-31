@@ -1,7 +1,7 @@
 /*
- * Contacts API
+ * API Cadastro
  *
- * An API for keeping track of your contacts and the companies they work for.   Don't forget to take it for a spin by clicking on the **Try in Client** button next to each operation! All read operations are public and don't require authentication.  <div> <img src='https://thecontactsapi.apispark.net/v1/img/cropped-contact-img.png' width='90%'> <div>  <!- - ![](https://thecontactsapi.apispark.net/v1/img/cropped-contact-img.png) - ->  
+ * Teste para workflow API-based: - Restlet gera API e exporta swagger.json - NSwag importa arquivo e gera server stub e client class  
  *
  * OpenAPI spec version: 1.2.0
  * 

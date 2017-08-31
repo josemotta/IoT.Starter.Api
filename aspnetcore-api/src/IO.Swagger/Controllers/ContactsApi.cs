@@ -1,7 +1,7 @@
 /*
- * Contacts API
+ * API Cadastro
  *
- * An API for keeping track of your contacts and the companies they work for.   Don't forget to take it for a spin by clicking on the **Try in Client** button next to each operation! All read operations are public and don't require authentication.  <div> <img src='https://thecontactsapi.apispark.net/v1/img/cropped-contact-img.png' width='90%'> <div>  <!- - ![](https://thecontactsapi.apispark.net/v1/img/cropped-contact-img.png) - ->  
+ * Teste para workflow API-based: - Restlet gera API e exporta swagger.json - NSwag importa arquivo e gera server stub e client class  
  *
  * OpenAPI spec version: 1.2.0
  * 
@@ -48,7 +48,7 @@ namespace IO.Swagger.Controllers
         /// <param name="contactid">Identifier of the Contact</param>
         /// <response code="200">Status 200</response>
         [HttpDelete]
-        [Route("/v1/contacts/{contactid}")]
+        [Route("/contacts/{contactid}")]
         [SwaggerOperation("ContactsContactidDelete")]
         public virtual void ContactsContactidDelete([FromRoute]string contactid)
         { 
@@ -64,7 +64,7 @@ namespace IO.Swagger.Controllers
         /// <response code="200">Status 200</response>
         /// <response code="400">Status 400</response>
         [HttpGet]
-        [Route("/v1/contacts/{contactid}")]
+        [Route("/contacts/{contactid}")]
         [SwaggerOperation("ContactsContactidGet")]
         [SwaggerResponse(200, type: typeof(Contact))]
         public virtual IActionResult ContactsContactidGet([FromRoute]string contactid)
@@ -86,7 +86,7 @@ namespace IO.Swagger.Controllers
         /// <param name="body"></param>
         /// <response code="200">Status 200</response>
         [HttpPut]
-        [Route("/v1/contacts/{contactid}")]
+        [Route("/contacts/{contactid}")]
         [SwaggerOperation("ContactsContactidPut")]
         [SwaggerResponse(200, type: typeof(Contact))]
         public virtual IActionResult ContactsContactidPut([FromRoute]string contactid, [FromBody]Contact body)
@@ -114,7 +114,7 @@ namespace IO.Swagger.Controllers
         /// <response code="200">Status 200</response>
         /// <response code="400">Status 400</response>
         [HttpGet]
-        [Route("/v1/contacts/")]
+        [Route("/contacts/")]
         [SwaggerOperation("ContactsGet")]
         [SwaggerResponse(200, type: typeof(List<Contact>))]
         public virtual IActionResult ContactsGet([FromQuery]int? size, [FromQuery]int? page, [FromQuery]string sort, [FromQuery]string firstName, [FromQuery]string lastName, [FromQuery]bool? active, [FromQuery]string company)
@@ -135,7 +135,7 @@ namespace IO.Swagger.Controllers
         /// <param name="body"></param>
         /// <response code="200">Status 200</response>
         [HttpPost]
-        [Route("/v1/contacts/")]
+        [Route("/contacts/")]
         [SwaggerOperation("ContactsPost")]
         [SwaggerResponse(200, type: typeof(Contact))]
         public virtual IActionResult ContactsPost([FromBody]Contact body)

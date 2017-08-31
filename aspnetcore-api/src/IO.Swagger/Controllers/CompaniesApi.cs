@@ -1,7 +1,7 @@
 /*
- * Contacts API
+ * API Cadastro
  *
- * An API for keeping track of your contacts and the companies they work for.   Don't forget to take it for a spin by clicking on the **Try in Client** button next to each operation! All read operations are public and don't require authentication.  <div> <img src='https://thecontactsapi.apispark.net/v1/img/cropped-contact-img.png' width='90%'> <div>  <!- - ![](https://thecontactsapi.apispark.net/v1/img/cropped-contact-img.png) - ->  
+ * Teste para workflow API-based: - Restlet gera API e exporta swagger.json - NSwag importa arquivo e gera server stub e client class  
  *
  * OpenAPI spec version: 1.2.0
  * 
@@ -48,7 +48,7 @@ namespace IO.Swagger.Controllers
         /// <param name="companyid">Identifier of the Company</param>
         /// <response code="200">Status 200</response>
         [HttpDelete]
-        [Route("/v1/companies/{companyid}")]
+        [Route("/companies/{companyid}")]
         [SwaggerOperation("CompaniesCompanyidDelete")]
         public virtual void CompaniesCompanyidDelete([FromRoute]string companyid)
         { 
@@ -64,7 +64,7 @@ namespace IO.Swagger.Controllers
         /// <response code="200">Status 200</response>
         /// <response code="400">Status 400</response>
         [HttpGet]
-        [Route("/v1/companies/{companyid}")]
+        [Route("/companies/{companyid}")]
         [SwaggerOperation("CompaniesCompanyidGet")]
         [SwaggerResponse(200, type: typeof(Company))]
         public virtual IActionResult CompaniesCompanyidGet([FromRoute]string companyid)
@@ -86,7 +86,7 @@ namespace IO.Swagger.Controllers
         /// <param name="body"></param>
         /// <response code="200">Status 200</response>
         [HttpPut]
-        [Route("/v1/companies/{companyid}")]
+        [Route("/companies/{companyid}")]
         [SwaggerOperation("CompaniesCompanyidPut")]
         [SwaggerResponse(200, type: typeof(Company))]
         public virtual IActionResult CompaniesCompanyidPut([FromRoute]string companyid, [FromBody]Company body)
@@ -111,7 +111,7 @@ namespace IO.Swagger.Controllers
         /// <response code="200">Status 200</response>
         /// <response code="400">Status 400</response>
         [HttpGet]
-        [Route("/v1/companies/")]
+        [Route("/companies/")]
         [SwaggerOperation("CompaniesGet")]
         [SwaggerResponse(200, type: typeof(List<Company>))]
         public virtual IActionResult CompaniesGet([FromQuery]int? size, [FromQuery]decimal? page, [FromQuery]string sort, [FromQuery]string name)
@@ -132,7 +132,7 @@ namespace IO.Swagger.Controllers
         /// <param name="body"></param>
         /// <response code="200">Status 200</response>
         [HttpPost]
-        [Route("/v1/companies/")]
+        [Route("/companies/")]
         [SwaggerOperation("CompaniesPost")]
         [SwaggerResponse(200, type: typeof(Company))]
         public virtual IActionResult CompaniesPost([FromBody]Company body)
