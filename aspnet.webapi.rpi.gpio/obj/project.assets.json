@@ -12885,11 +12885,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\_code\\aspnet.webapi.rpi.gpio\\aspnet.webapi.rpi.gpio.csproj",
+      "projectUniqueName": "C:\\_git\\Api\\aspnet.webapi.rpi.gpio\\aspnet.webapi.rpi.gpio.csproj",
       "projectName": "aspnet.webapi.rpi.gpio",
-      "projectPath": "C:\\_code\\aspnet.webapi.rpi.gpio\\aspnet.webapi.rpi.gpio.csproj",
+      "projectPath": "C:\\_git\\Api\\aspnet.webapi.rpi.gpio\\aspnet.webapi.rpi.gpio.csproj",
       "packagesPath": "C:\\Users\\jo\\.nuget\\packages\\",
-      "outputPath": "C:\\_code\\aspnet.webapi.rpi.gpio\\obj\\",
+      "outputPath": "C:\\_git\\Api\\aspnet.webapi.rpi.gpio\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
