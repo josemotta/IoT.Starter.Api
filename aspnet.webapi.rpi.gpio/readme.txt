@@ -1,3 +1,29 @@
+----------------------
+ASPNET.WEBAPI.RPI.GPIO
+Deployment Workflow
+----------------------
+x64 Development:
+
+cd "C:\_git\Api\aspnet.webapi.rpi.gpio"
+
+Linux-Arm Build:
+
+docker-compose -f docker-compose.ci.build.yml build
+docker build -t josemottalopes/gpio:latest .
+docker push josemottalopes/gpio:latest
+
+RaspberryPI Deployment:
+
+export ASPNETCORE_URLS="http://*:5000"
+docker run --privileged -p 5000:5000 josemottalopes/gpio
+
+CLIENT Test:
+
+curl -H "Content-Type: application/json" -d 'true' http://lumi:5000/api/blinky
+
+===================================================================================
+RASCUNHO
+
 dotnet restore
 dotnet publish -c Release -r linux-arm
 
