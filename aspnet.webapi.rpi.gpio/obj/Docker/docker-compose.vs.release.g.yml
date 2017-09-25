@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  aspnet.webapi.rpi.gpio:
+    build:
+      args:
+        source: obj/Docker/publish/
+    volumes:
+      - C:\Users\jo\vsdbg:/remote_debugger:ro
+    entrypoint: tail -f /dev/null
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /root/.nuget/packages --additionalProbingPath /root/.nuget/fallbackpackages  aspnet.webapi.rpi.gpio.dll"
+      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
+      com.microsoft.visualstudio.debuggee.killprogram: "/bin/bash -c \"if PID=$$(pidof -x dotnet); then kill $$PID; fi\""

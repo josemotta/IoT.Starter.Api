@@ -28,7 +28,7 @@ namespace aspnet.webapi.rpi.gpio.Controllers
 
             pin = Pi.Gpio.Pin13;
             pin.PinMode = GpioPinDriveMode.Output;
-            for (int i = 1; i < 50; i++)
+            for (int i = 1; i < 5; i++)
             {
                 pin.Write(!isOn);
                 Thread.Sleep(300);
