@@ -1,8 +1,0 @@
-version: '3'
-
-services:
-  aspnet.webapi.rpi.gpio:
-    image: aspnet.webapi.rpi.gpio
-    build:
-      context: .
-      dockerfile: Dockerfile
