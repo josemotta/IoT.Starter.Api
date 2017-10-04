@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" Sdk="Microsoft.Docker.Sdk">
+  <PropertyGroup Label="Globals">
+    <ProjectVersion>2.0</ProjectVersion>
+    <DockerTargetOS>Linux</DockerTargetOS>
+    <ProjectGuid>d9bbbf1c-6bfb-4543-be7f-396f5ee4f401</ProjectGuid>
+    <DockerLaunchBrowser>True</DockerLaunchBrowser>
+    <DockerServiceUrl>http://localhost:{ServicePort}/swagger/ui/index.html</DockerServiceUrl>
+    <DockerServiceName>io.swagger</DockerServiceName>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="docker-compose.ci.build.yml" />
+    <None Include="docker-compose.override.yml">
+      <DependentUpon>docker-compose.yml</DependentUpon>
+    </None>
+    <None Include="docker-compose.yml" />
+  </ItemGroup>
+</Project>
