@@ -2,8 +2,15 @@ version: '3'
 
 services:
   ci-build:
-    image: microsoft/aspnetcore-build:1.0-1.1
+    image: josemottalopes/io.swagger
+    build:
+      args:
+        source: obj/Docker/publish/
+      context: ./src/IO.Swagger
+      dockerfile: Dockerfile
     volumes:
       - .:/src
     working_dir: /src
-    command: /bin/bash -c "dotnet restore ./IO.Swagger.sln && dotnet publish ./IO.Swagger.sln -c Release -o ./obj/Docker/publish"
+#   command: /bin/bash -c "dotnet restore ./IO.Swagger.sln -r linux-arm && dotnet publish ./IO.Swagger.sln -c Release -r linux-arm -o ./obj/Docker/publish"
+    ports:
+    - "5000:5000"
