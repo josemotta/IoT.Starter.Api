@@ -1,7 +1,7 @@
 /* 
  * API Cadastro
  *
- * Teste para workflow API-based: - Restlet gera API e exporta swagger.json - NSwag importa arquivo e gera server stub e client class  
+ * Teste para workflow API-based:   - Restlet gera API e exporta swagger.json   - NSwag importa arquivo e gera server stub e client class    
  *
  * OpenAPI spec version: 1.2.0
  * 
