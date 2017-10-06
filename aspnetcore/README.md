@@ -1,6 +1,6 @@
 # IO.Swagger - ASP.NET Core 1.0 Server
 
-Teste para workflow API-based: - Restlet gera API e exporta swagger.json - NSwag importa arquivo e gera server stub e client class  
+Teste para workflow API-based:   - Restlet gera API e exporta swagger.json   - NSwag importa arquivo e gera server stub e client class    
 
 ## Run
 
