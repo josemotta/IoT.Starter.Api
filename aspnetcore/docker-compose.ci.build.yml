@@ -4,8 +4,6 @@ services:
   ci-build:
     image: josemottalopes/io.swagger
     build:
-      args:
-        source: obj/Docker/publish/
       context: ./src/IO.Swagger
       dockerfile: Dockerfile
     volumes:
@@ -14,3 +12,7 @@ services:
 #   command: /bin/bash -c "dotnet restore ./IO.Swagger.sln -r linux-arm && dotnet publish ./IO.Swagger.sln -c Release -r linux-arm -o ./obj/Docker/publish"
     ports:
     - "5000:5000"
+    network_mode: bridge
+#networks:
+#  default:
+#    external: true
