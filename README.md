@@ -32,3 +32,15 @@ A multi-stage docker image build is accomplished at the speedy Windows x64 machi
 - Go back to x64 machine
 - Access pi-server-stub via browser  
 - http://pi:5000/swagger/ui/index.html 
+
+#### Commands 
+
+##### x64: Build 
+docker-compose -f docker-compose.ci.build.yml build   
+docker push josemottalopes/io.swagger:latest  
+
+##### arm: RaspberryPi (hostname "pi")  
+docker run --privileged -p 5000:5000 josemottalopes/io.swagger  
+
+##### any: Client Test
+http://pi:5000/swagger/ui/index.html

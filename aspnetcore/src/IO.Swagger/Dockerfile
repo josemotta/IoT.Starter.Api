@@ -1,16 +1,6 @@
-#FROM josemottalopes/gpio-base
-#FROM microsoft/aspnetcore-build:1.0-2.0
-#ARG source
-#ENV DOTNET_CLI_TELEMETRY_OPTOUT 1
-#WORKDIR /app
-#EXPOSE 5000
-#COPY ${source:-obj/Docker/publish} .
-#ENTRYPOINT ["dotnet", "IO.Swagger.dll"]
-
 FROM microsoft/aspnetcore-build:1.0-2.0 as builder
 WORKDIR /app
 ADD ./ /app/
-#RUN /bin/bash -c "cd /app && dotnet restore ./IO.Swagger.csproj -r linux-arm && dotnet publish ./IO.Swagger.csproj -c Release -r linux-arm -o ./obj/Docker/publish && ls -la /app/obj/Docker/publish/ && ls -la /app/bin/Release/netcoreapp2.0/linux-arm"
 RUN /bin/bash -c "cd /app && dotnet restore ./IO.Swagger.csproj -r linux-arm && dotnet publish ./IO.Swagger.csproj -c Release -r linux-arm -o ./obj/Docker/publish"
 
 FROM josemottalopes/gpio-base
@@ -19,8 +9,5 @@ EXPOSE 5000
 ENV DOTNET_CLI_TELEMETRY_OPTOUT 1
 ENV ASPNETCORE_URLS "http://*:5000"
 COPY --from=builder /app/obj/Docker/publish/ /app/
-#RUN /bin/bash -c "chmod +x /app/IO.Swagger.dll && ls -la /app"
-#/app/bin/Release/netcoreapp2.0/linux-arm/
-#RUN /bin/bash -c "ls -la /app"
 ENTRYPOINT /app/IO.Swagger
 
