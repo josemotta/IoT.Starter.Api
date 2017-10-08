@@ -72,7 +72,7 @@ namespace IO.Swagger
                 {
                     Version = "v1",
                     Title = "IO.Swagger",
-                    Description = "IO.Swagger (ASP.NET Core 1.0)"
+                    Description = "IO.Swagger (ASP.NET Core 2.0)"
                 });
 
                 options.DescribeAllEnumsAsStrings();
