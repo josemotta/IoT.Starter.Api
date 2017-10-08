@@ -1,6 +1,4 @@
-# IO.Swagger - ASP.NET Core 1.0 Server
-
-Teste para workflow API-based:  
+# Teste para workflow API-based:  
 
 - Restlet gera API e exporta swagger.json   
 - SwaggerHub importa arquivo e gera server stub   
@@ -12,24 +10,3 @@ Teste para workflow API-based:
 - Retorna à maquina x64 e acessa o pi-server-stub via browser   
 - http://pi:5000/swagger/ui/index.html    
 
-## Run
-
-Linux/OS X:
-
-```
-sh build.sh
-```
-
-Windows:
-
-```
-build.bat
-```
-
-## Run in Docker
-
-```
-cd src/IO.Swagger
-docker build -t IO.Swagger .
-docker run -p 5000:5000 IO.Swagger
-```
