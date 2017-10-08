@@ -1,0 +1,601 @@
+swagger: '2.0'
+info:
+  description: |+
+    Teste para workflow API-based:  
+    - Restlet gera API e exporta swagger.json  
+    - SwaggerHub importa arquivo e gera server stub  
+    - Instala server stub em docker repo: io.swagger  
+    - Compila em máquina x64 e gera linux-arm: io.swagger  
+    - Docker push josemottalopes/io.swagger  
+    - Na Raspberry Pi, com hostname "pi", instala-se o Docker  
+    - Docker run -d josemottalopes/io.swagger  
+    - Retorna à maquina x64 e acessa o pi-server-stub via browser  
+    - http://pi:5000/swagger/ui/index.html  
+
+  version: 1.2.0
+  title: API Cadastro
+  termsOfService: ''
+  contact:
+    name: José Motta
+host: cadastro.restlet.io
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /contacts/:
+    get:
+      tags:
+        - Contacts
+      summary: Get the list of Contacts
+      description: Loads a list of Contact
+      parameters:
+        - name: $size
+          in: query
+          required: false
+          type: integer
+          description: Size of the page to retrieve.
+          x-example: 10
+        - name: $page
+          in: query
+          required: false
+          type: integer
+          description: Number of the page to retrieve.
+          x-example: 1
+        - name: $sort
+          in: query
+          required: false
+          type: string
+          description: Order in which to retrieve the results. Multiple sort criteria can be passed.
+          x-example: birthday DESC
+        - name: firstName
+          in: query
+          required: false
+          type: string
+          description: Allows to filter the collections of result by the value of field firstName
+          x-example: John
+        - name: lastName
+          in: query
+          required: false
+          type: string
+          description: Allows to filter the collections of result by the value of field lastName
+          x-example: Doe
+        - name: active
+          in: query
+          required: false
+          type: boolean
+          description: Allows to filter the collections of result by the value of field active
+          x-example: true
+        - name: company
+          in: query
+          required: false
+          type: string
+          description: Allows to filter the collections of result by the value of field company
+          x-example: 0e8c9fb0-ad98-11e6-bf2e-47644ada7c0f
+      responses:
+        '200':
+          description: Status 200
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Contact'
+          examples:
+            application/json: |-
+              [{
+                "id": "0e8dd830-ad98-11e6-bf2e-47644ada7c0f",
+                "firstName": "John",
+                "lastName": "Smith",
+                "taxid": "333.088.247/53",
+                "birthday": 152755200000,
+                "active": true,
+                "rank": 1,
+                "company": "0e8cedd0-ad98-11e6-bf2e-47644ada7c0f"
+              }]
+          headers:
+            X-Page-Count:
+              type: integer
+              x-example: 1
+            X-Page-Number:
+              type: integer
+              x-example: 1
+            X-Page-Size:
+              type: integer
+              x-example: 25
+            X-Total-Count:
+              type: integer
+              x-example: 2
+        '400':
+          description: Status 400
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      tags:
+        - Contacts
+      summary: Create a Contact
+      description: Adds a Contact
+      consumes: []
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Contact'
+          x-examples:
+            application/json: |-
+              {
+                "firstName": "John",
+                "lastName": "Smith",
+                "taxid": "333.088.247/53",
+                "birthday": 152755200000,
+                "active": true,
+                "rank": 1,
+                "company": "0e8cedd0-ad98-11e6-bf2e-47644ada7c0f"
+              }
+      responses:
+        '200':
+          description: Status 200
+          schema:
+            $ref: '#/definitions/Contact'
+          examples:
+            application/json: |-
+              {
+                "id": "0e8dd830-ad98-11e6-bf2e-47644ada7c0f",
+                "firstName": "John",
+                "lastName": "Smith",
+                "taxid": "333.088.247/53",
+                "birthday": 152755200000,
+                "active": true,
+                "rank": 1,
+                "company": "0e8cedd0-ad98-11e6-bf2e-47644ada7c0f"
+              }
+      security:
+        - HTTP_BASIC: []
+  '/contacts/{contactid}':
+    get:
+      tags:
+        - Contacts
+      summary: Load an individual Contact
+      description: Loads a Contact
+      parameters: []
+      responses:
+        '200':
+          description: Status 200
+          schema:
+            $ref: '#/definitions/Contact'
+          examples:
+            application/json: |-
+              {
+                "id": "0e8dd830-ad98-11e6-bf2e-47644ada7c0f",
+                "firstName": "John",
+                "lastName": "Smith",
+                "taxid": "333.088.247/53",
+                "birthday": 152755200000,
+                "active": true,
+                "rank": 1,
+                "company": "0e8cedd0-ad98-11e6-bf2e-47644ada7c0f"
+              }
+        '400':
+          description: Status 400
+          schema:
+            $ref: '#/definitions/Error'
+    put:
+      tags:
+        - Contacts
+      summary: Update a Contact
+      description: Stores a Contact
+      consumes: []
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Contact'
+          x-examples:
+            application/json: |-
+              {
+                "firstName": "John",
+                "lastName": "Smith",
+                "taxid": "333.088.247/53",
+                "birthday": 152755200000,
+                "active": true,
+                "rank": 1,
+                "company": "0e8cedd0-ad98-11e6-bf2e-47644ada7c0f"
+              }
+      responses:
+        '200':
+          description: Status 200
+          schema:
+            $ref: '#/definitions/Contact'
+          examples:
+            application/json: |-
+              {
+                "id": "0e8dd830-ad98-11e6-bf2e-47644ada7c0f",
+                "firstName": "John",
+                "lastName": "Smith",
+                "taxid": "333.088.247/53",
+                "birthday": 152755200000,
+                "active": true,
+                "rank": 1,
+                "company": "0e8cedd0-ad98-11e6-bf2e-47644ada7c0f"
+              }
+      security:
+        - HTTP_BASIC: []
+    delete:
+      tags:
+        - Contacts
+      summary: Delete a Contact
+      description: Deletes a Contact
+      parameters: []
+      responses:
+        '200':
+          description: Status 200
+      security:
+        - HTTP_BASIC: []
+    parameters:
+      - name: contactid
+        in: path
+        required: true
+        type: string
+        description: Identifier of the Contact
+        x-example: 0e8dd830-ad98-11e6-bf2e-47644ada7c0f
+  /companies/:
+    get:
+      tags:
+        - Companies
+      summary: Load the list of Companies
+      description: Loads a list of Company
+      parameters:
+        - name: $size
+          in: query
+          required: false
+          type: integer
+          description: Size of the page to retrieve.
+          x-example: 10
+        - name: $page
+          in: query
+          required: false
+          type: number
+          description: Number of the page to retrieve.
+          x-example: 1
+        - name: $sort
+          in: query
+          required: false
+          type: string
+          description: 'Order in which to retrieve the results. Multiple sort criteria can be passed. Example: sort=age ASC,height DESC'
+          x-example: name ASC
+        - name: name
+          in: query
+          required: false
+          type: string
+          description: Allows to filter the collections of result by the value of field name
+          x-example: George Street Brewery
+      responses:
+        '200':
+          description: Status 200
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Company'
+          examples:
+            application/json: |-
+              [{
+                "id": "0e8cedd0-ad98-11e6-bf2e-47644ada7c0f",
+                "name": "George Street Brewery",
+                "address":{
+                  "street": "2 place de la Defense",
+                  "zipcode": "92053",
+                  "city": "Paris",
+                  "taxid": "29.691.807/0001-87"
+                },
+                "tags":[
+                  "brewery",
+                  "beer",
+                  "ale"
+                ]
+              }]
+          headers:
+            X-Page-Count:
+              type: integer
+              x-example: 1
+            X-Page-Number:
+              type: integer
+              x-example: 1
+            X-Page-Size:
+              type: integer
+              x-example: 25
+            X-Total-Count:
+              type: integer
+              x-example: 2
+        '400':
+          description: Status 400
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      tags:
+        - Companies
+      summary: Create a new Company
+      description: Adds a Company
+      consumes: []
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Company'
+          x-examples:
+            application/json: |-
+              {
+                "name": "George Street Brewery",
+                "address":{
+                  "street": "2 place de la Defense",
+                  "zipcode": "92053",
+                  "city": "Paris",
+                  "taxid": "29.691.807/0001-87"
+                },
+                "tags":[
+                  "brewery",
+                  "beer",
+                  "ale"
+                ]
+              }
+      responses:
+        '200':
+          description: Status 200
+          schema:
+            $ref: '#/definitions/Company'
+          examples:
+            application/json: |-
+              {
+                "id": "0e8cedd0-ad98-11e6-bf2e-47644ada7c0f",
+                "name": "George Street Brewery",
+                "address":{
+                  "street": "2 place de la Defense",
+                  "zipcode": "92053",
+                  "city": "Paris",
+                  "taxid": "29.691.807/0001-87"
+                },
+                "tags":[
+                  "brewery",
+                  "beer",
+                  "ale"
+                ]
+              }
+      security:
+        - HTTP_BASIC: []
+  '/companies/{companyid}':
+    get:
+      tags:
+        - Companies
+      summary: Load an individual Company
+      description: Loads a Company
+      parameters: []
+      responses:
+        '200':
+          description: Status 200
+          schema:
+            $ref: '#/definitions/Company'
+          examples:
+            application/json: |-
+              {
+                "id": "0e8cedd0-ad98-11e6-bf2e-47644ada7c0f",
+                "name": "George Street Brewery",
+                "address":{
+                  "street": "2 place de la Defense",
+                  "zipcode": "92053",
+                  "city": "Paris",
+                  "taxid": "29.691.807/0001-87"
+                },
+                "tags":[
+                  "brewery",
+                  "beer",
+                  "ale"
+                ]
+              }
+        '400':
+          description: Status 400
+          schema:
+            $ref: '#/definitions/Error'
+    put:
+      tags:
+        - Companies
+      summary: Update a Company
+      description: Stores a Company
+      consumes: []
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Company'
+          x-examples:
+            application/json: |-
+              {
+                "name": "George Street Brewery",
+                "address":{
+                  "street": "2 place de la Defense",
+                  "zipcode": "92053",
+                  "city": "Paris",,
+                  "taxid": "29.691.807/0001-87"
+                },
+                "tags":[
+                  "brewery",
+                  "beer",
+                  "ale"
+                ]
+              }
+      responses:
+        '200':
+          description: Status 200
+          schema:
+            $ref: '#/definitions/Company'
+          examples:
+            application/json: |-
+              {
+                "id": "0e8cedd0-ad98-11e6-bf2e-47644ada7c0f",
+                "name": "George Street Brewery",
+                "address":{
+                  "street": "2 place de la Defense",
+                  "zipcode": "92053",
+                  "city": "Paris",
+                  "taxid": "29.691.807/0001-87"
+                },
+                "tags":[
+                  "brewery",
+                  "beer",
+                  "ale"
+                ]
+              }
+      security:
+        - HTTP_BASIC: []
+    delete:
+      tags:
+        - Companies
+      summary: Delete a Company
+      description: Deletes a Company
+      parameters: []
+      responses:
+        '200':
+          description: Status 200
+      security:
+        - HTTP_BASIC: []
+    parameters:
+      - name: companyid
+        in: path
+        required: true
+        type: string
+        description: Identifier of the Company
+        x-example: 0e8c9fb0-ad98-11e6-bf2e-47644ada7c0f
+securityDefinitions:
+  HTTP_BASIC:
+    description: 'All GET methods are public, meaning that *you can read all the data*. Write operations require authentication and therefore are forbidden to the general public.'
+    type: basic
+definitions:
+  Error:
+    type: object
+    required:
+      - code
+    properties:
+      code:
+        type: integer
+        minimum: 400
+        maximum: 599
+      description:
+        type: string
+        example: 'Bad query parameter [$size]: Invalid integer value [abc]'
+      reasonPhrase:
+        type: string
+        example: Bad Request
+    description: This general error structure is used throughout this API.
+    example: |-
+      {
+        "code": 400,
+        "description": "Bad query parameter [$size]: Invalid integer value [abc]",
+        "reasonPhrase": "Bad Request"
+      }
+  Contact:
+    type: object
+    required:
+      - firstName
+      - id
+      - lastName
+      - taxId
+    properties:
+      id:
+        type: string
+        description: Auto-generated primary key field
+        example: 0e8ffb10-ad98-11e6-bf2e-47644ada7c0f
+      firstName:
+        type: string
+        example: Kurt
+      lastName:
+        type: string
+        example: Williams
+      taxId:
+        type: string
+        example: 333.088.247/53
+      birthday:
+        type: integer
+        format: int64
+        description: Birthday as unix timestamp (in ms)
+        example: 173664000000
+      active:
+        type: boolean
+        default: true
+      rank:
+        type: integer
+        format: int32
+        minimum: 1
+        example: 1
+      company:
+        type: string
+        description: This property is a reference to a Company
+        example: 0e8c9fb0-ad98-11e6-bf2e-47644ada7c0f
+    description: A representation of a Contact.
+    example: |-
+      {
+        "id": "0e8dd830-ad98-11e6-bf2e-47644ada7c0f",
+        "firstName": "John",
+        "lastName": "Smith",
+        "taxid": "333.088.247/53",
+        "birthday": 152755200000,
+        "active": true,
+        "rank": 1,
+        "company": "0e8cedd0-ad98-11e6-bf2e-47644ada7c0f"
+      }
+  Company:
+    type: object
+    required:
+      - address
+      - id
+      - name
+    properties:
+      id:
+        type: string
+        description: Auto-generated primary key field
+      name:
+        type: string
+      tags:
+        type: array
+        items:
+          type: string
+          pattern: '[a-zA-Z]+'
+        example: '["brewery", "beer", "ale"]'
+      address:
+        required:
+          - city
+          - street
+          - taxId
+          - zipcode
+        type: object
+        properties:
+          street:
+            type: string
+          street2:
+            type: string
+          city:
+            type: string
+          zipcode:
+            type: string
+            pattern: '[0-9]*'
+          taxId:
+            type: string
+            example: 29.691.803/0001-80
+    description: A representation of a Company.
+    example: |-
+      {
+        "id": "0e8cedd0-ad98-11e6-bf2e-47644ada7c0f",
+        "name": "George Street Brewery",
+        "address":{
+          "street": "2 place de la Defense",
+          "zipcode": "92053",
+          "city": "Paris",
+          "taxid": "29.691.807/0001-87"
+        },
+        "tags":[
+          "brewery",
+          "beer",
+          "ale"
+        ]
+      }

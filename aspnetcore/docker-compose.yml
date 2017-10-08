@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  io.swagger:
+    image: io.swagger
+    build:
+      context: ./src/IO.Swagger
+      dockerfile: Dockerfile
