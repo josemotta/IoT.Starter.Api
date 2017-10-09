@@ -1,6 +1,11 @@
 # API
 
-Faster build and the great Visual Studio development environment are the key advantages of this workflow. 
+Faster build and the great Visual Studio development environment are the key advantages of this workflow.
+
+**Links:**
+https://app.swaggerhub.com/apis/josemottalopes/contacts-api/1.2.0  
+https://github.com/josemotta/Api  
+https://hub.docker.com/r/josemottalopes/io.swagger/   
 
 ## ASP.NET Core Web API for Raspberry Pi
 
