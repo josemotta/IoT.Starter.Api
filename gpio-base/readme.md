@@ -65,15 +65,53 @@ GPIO 4 of RPi header pin 7
     cd 28-*
     cat w1_slave
 
-## Infrared Lirc + Keyes IR input 838B
+## Infrared + Keyes IR input 838B
 
-#### Install Lirc (instala muita coisa!!)
+### opção1: gpio-ir
+
+- uses kernel embedded IR software
+- receive keys directly to /dev/input/event* device
+- all decoding is done by the kernel
+- key mapping configured by ir-keytable tool
+- Lirc is not required
+- GPIO pin 18 default
+
+Add to /boot/config.txt
+
+    dtoverlay=gpio-ir, gpio_pin=18,gpio_pull=down,rc-map-name=rc-rc6-mce
+
+### opção2: gpio-shutdown
+
+- Initiates a shutdown when GPIO changes
+
+Add to /boot/config.txt
+
+    dtoverlay=gpio-shutdown,gpio_pin=3,active_low=1,gpio_pull=up
+
+### opção3: lirc-rpi
+
+- Linux Infrared Remote Control for Raspberry Pi
+
+#### Add to /boot/config.txt (all default settings here)
+
+    dtoverlay=lirc-rpi,gpio_out_pin=17,gpio_in_pin=18,gpio_in_pull=down
+
+- sense: 0-active high, 1 active low, -1 auto detection default
+- softcarrier: default on
+- invert: signal at output pin, default off 
+- debug: add additional messages, default off
+
+#### Install Lirc
 
     sudo apt-get install lirc
 
-#### Add to /boot/config.txt
+#### Add to /boot/config.txt (true setup here)
 
     # Uncomment this to enable the lirc-rpi module
+    dtoverlay=lirc-rpi,gpio_out_pin=16,gpio_in_pin=17,gpio_in_pull=up
+
+    or
+
     dtoverlay=lirc-rpi
     dtparam=gpio_out_pin=16
     dtparam=gpio_in_pin=17
