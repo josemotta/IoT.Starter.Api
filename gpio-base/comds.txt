@@ -1,0 +1,147 @@
+
+
+docker container prune
+docker image prune
+docker container ls -a
+docker-compose -f docker-compose.ci.build.yml build
+docker push josemottalopes/io.swagger:latest
+
+
+http://lumi:5000/swagger/ui/index.html
+
+ip a
+docker network ls
+docker network inspect host
+
+Remove dangling images
+docker images -f dangling=true
+docker rmi $(docker images -f dangling=true -q)
+
+netstat -l	listening
+netstat -lt	listening TCP
+netstat -at	TCP
+netstat -au	UDP
+netstat -st	statistics TCP
+netstat -ie	ifconfig
+netstat -g	multicast group
+netstat -r	routing
+netstat -tp	service name
+
+1-WIRE + TEMP SENSOR DS18B20
+
+=> Enable 1-Wire -------------------------------------------------------------
+append to /boot/config.txt and reboot:
+dtoverlay=w1-gpio,gpiopin=4,pullup=on
+
+#alteri porque pull up dava erro
+"dtoverlay=w1-gpio-pullup,gpiopin=4" (no spaces)
+GPIO 4 of RPi header pin 7
+
+List the 1-Wire module
+lsmod | grep w1
+
+Start the module
+modprobe w1_gpio
+modprobe w1_therm
+
+Read temperature
+
+cd /sys/bus/w1/devices
+cd 28-*
+cat w1_slave
+
+=> Enable Infrared -----------------------------------------------------------
+Install Lirc (instala muita coisa!!):
+sudo apt-get install lirc
+
+IR transmitter/receiver: -------------------------------
+não precisa pull-up externo, pode configurar GPIO built-in
+GPIO18 default data-in?
+
+=> /boot/config.txt
+# Uncomment this to enable the lirc-rpi module
+dtoverlay=lirc-rpi
+dtparam=gpio_out_pin=16
+dtparam=gpio_in_pin=17
+dtparam=gpio_in_pull=up
+
+=> /etc/modules
+lirc_dev
+lirc_rpi 
+
+# tirei fora porque estava dando erro
+#lirc_rpi gpio_in_pin=17 gpio_out_pin=16 gpio_in_pull=up
+
+=> /etc/lirc/hardware.conf
+LIRCD_ARGS="--uinput"
+LOAD_MODULES=true
+DRIVER="default"
+DEVICE="/dev/lirc0"
+MODULES="lirc_rpi"
+LIRCD_CONF=""
+LIRCMD_CONF=""
+
+=> /etc/lirc/lirc_options.conf
+trocar de:
+driver          = devinput
+device          = auto
+
+para:
+driver          = default
+device          = /dev/lirc0
+
+
+=> System ---------------------------------------------------------------------------
+systemctl stop lircd
+systemctl start lircd
+systemctl status lircd
+
+=> checking
+the GPIO ports -------------------------------------------------------------
+lsmod | grep lirccat /sys/kernel/debug/gpio
+
+GPIOs 0-53, bcm2708_gpio:
+ gpio-16  (led0                ) out hi
+ gpio-17  (lirc_rpi ir/out     ) in  lo
+ gpio-18  (lirc_rpi ir/in      ) in  lo
+
+devices, dmesg, journal -------------------------------------------------------------
+cat /proc/bus/input/devices
+journalctl -x
+dmesg 
+
+mode2 --driver default --list-devices
+/dev/lirc0
+
+=> tests -------------------------------------------------------------
+mode2 --driver default --device /dev/lirc0
+
+Testing the IR receiver -----------------------------------------------------------
+Run these two commands to stop lircd and start outputting raw data from the IR receiver:
+
+sudo /etc/init.d/lirc stop
+mode2 -d /dev/lirc0
+
+acionar controle remoto perto IR receiver e constatar na tela pulse/space:
+space 28794
+pulse 80
+space 19395
+pulse 83
+space 402351
+pulse 135
+space 7085
+pulse 85
+space 2903
+
+For starting TV and then MUTE I created a small script:---------------------------
+
+#!/bin/bash
+/usr/bin/irsend SEND_ONCE lg_tv KEY_POWER
+sleep 10
+/usr/bin/irsend SEND_ONCE lg_tv KEY_MUTE
+
+Aplicativo
+Turn your Pi into an entertainment center controller for stuff you've already got.shutdown
+I use a Pi and a Flirc usb IR receiver to control my Philips Hue lights and my Mac via a universal remote control. Flirc is an awesome little gizmo that translates remote IR codes to hotkeys. And Raspbian includes a daemon called TriggerHappy that can be used to assign functions to hotkeys. So, a button press on my remote triggers a script that controls my Hue lights, or launches an Applescript on my Mac on the other side of the room, telling my Mac to stream an iTunes playlist to my Pi.
+I set this up a few months ago, and I'm frigging kicking myself for not having done it years ago.
+Oh, and I should add that the Allo Boss DAC kicks more butt than I could possibly express. It's fantastic - even for a picky audiophile like me.
