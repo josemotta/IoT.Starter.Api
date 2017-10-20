@@ -127,8 +127,8 @@ This setup considers the following hardware is available:
     lirc_dev
     lirc_rpi 
 
-    # tirei fora porque estava dando erro?
-    #lirc_rpi gpio_in_pin=17 gpio_out_pin=16 gpio_in_pull=up
+    # error?
+    #lirc_rpi gpio_in_pin=18 gpio_out_pin=17 gpio_in_pull=up
 
 #### Change existing /etc/lirc/lirc_options.conf
 
@@ -181,13 +181,16 @@ This setup considers the following hardware is available:
 
 #### Tests with mode2
 
+    mode2 --driver default --list-devices
+	/dev/lirc0
+
     mode2 --driver default --device /dev/lirc0
 
 #### Testing the IR receiver
 
 Run these two commands to stop lircd and start outputting raw data from the IR receiver
 
-    sudo /etc/init.d/lirc stop
+    /etc/init.d/lirc stop
     mode2 -d /dev/lirc0
 
 acionar controle remoto perto IR receiver e constatar na tela pulse/space:
