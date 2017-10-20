@@ -69,17 +69,16 @@ GPIO 4 of RPi header pin 7
 
 ### opção1: gpio-ir
 
-- uses kernel embedded IR software
-- receive keys directly to /dev/input/event* device
-- all decoding is done by the kernel
-- key mapping configured by ir-keytable tool
+- gpio-ir uses the upstream Linux gpio_rc_recv driver and supports in-kernel decoding (aka ir-keytable configuration)
+- gpio-r uses kernel embedded IR software and keys directly to /dev/input/event* device
+- all decoding is done by the kernel and key mapping is configured by ir-keytable tool
 - Lirc is not required
 - GPIO pin 18 default
 - The option `driver = devinput` should be configured
 
 Add to /boot/config.txt
 
-    dtoverlay=gpio-ir, gpio_pin=18,gpio_pull=down,rc-map-name=rc-rc6-mce
+    dtoverlay=gpio-ir,gpio_pin=18,gpio_pull=down,rc-map-name=rc-rc6-mce
 
 ### opção2: gpio-shutdown
 
@@ -91,14 +90,16 @@ Add to /boot/config.txt
 
 ### opção3: lirc-rpi
 
-- LIRC: Linux Infrared Remote Control for Raspberry Pi
+#### LIRC: Linux Infrared Remote Control for Raspberry Pi
+
 - Bengt Martensson has a further development of [a improved Lirc driver](https://github.com/bengtmartensson/lirc_rpi "lirc_rpi").
 - This seems to be the latest version available at Raspbian 4.9.54-v7+ distro and replaced the [original from Aron Szabo](http://aron.ws/projects/lirc_rpi/ "original lirc for rpi"), which in turn was derived from the Lirc serial driver.
 - Old configuration file `/etc/lirc/hardware.conf` should be converted
 - New configuration format at `/etc/lirc/lirc_options.conf`
-- The `driver = default` should be configured
+- Add custom device files to /etc/lirc/lircd.conf.d/
+- The `driver = default` should be configured (see below)
 
-#### Add to /boot/config.txt (all default settings here)
+Add to /boot/config.txt (all default settings here)
 
     dtoverlay=lirc-rpi,gpio_out_pin=17,gpio_in_pin=18,gpio_in_pull=down
 
