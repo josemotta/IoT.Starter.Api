@@ -91,7 +91,7 @@ Add to /boot/config.txt
 ### opção3: lirc-rpi
 
 - LIRC: Linux Infrared Remote Control for Raspberry Pi
-- Bengt Martensson has a further development of [the improved Lirc driver](https://github.com/bengtmartensson/lirc_rpi "lirc_rpi").
+- Bengt Martensson has a further development of [a improved Lirc driver](https://github.com/bengtmartensson/lirc_rpi "lirc_rpi").
 - This seems to be the latest version available at Raspbian 4.9.54-v7+ distro and replaced the [original from Aron Szabo](http://aron.ws/projects/lirc_rpi/ "original lirc for rpi"), which in turn was derived from the Lirc serial driver.
 - Old configuration file `/etc/lirc/hardware.conf` should be converted
 - New configuration format at `/etc/lirc/lirc_options.conf`
@@ -109,17 +109,16 @@ Add to /boot/config.txt
 
     sudo apt-get install lirc
 
-#### Add to /boot/config.txt (true setup here)
+#### Add to /boot/config.txt
+
+This setup considers the following hardware:
+
+- IR input: Keyes IR input 838B connected at GPIO18 (BCM 12)
+- IR output: a IR led driven by a 2N3904 transistor connected at GPIO17 (BCM 11)
 
     # Uncomment this to enable the lirc-rpi module
-    dtoverlay=lirc-rpi,gpio_out_pin=16,gpio_in_pin=17,gpio_in_pull=up
+    dtoverlay=lirc-rpi,gpio_out_pin=17,gpio_in_pin=18,gpio_in_pull=up
 
-    or
-
-    dtoverlay=lirc-rpi
-    dtparam=gpio_out_pin=16
-    dtparam=gpio_in_pin=17
-    dtparam=gpio_in_pull=up
 
 #### Add to /etc/modules
 
