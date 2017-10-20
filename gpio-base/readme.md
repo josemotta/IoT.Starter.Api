@@ -111,12 +111,12 @@ Add to /boot/config.txt
 
     sudo apt-get install lirc
 
-#### Add to /boot/config.txt
-
-This setup considers the following hardware:
+This setup considers the following hardware is available:
 
 - IR input: Keyes IR input 838B connected at GPIO18 (BCM 12)
 - IR output: a IR led driven by a 2N3904 transistor connected at GPIO17 (BCM 11)
+
+#### Add to /boot/config.txt
 
     # Uncomment this to enable the lirc-rpi module
     dtoverlay=lirc-rpi,gpio_out_pin=17,gpio_in_pin=18,gpio_in_pull=up
