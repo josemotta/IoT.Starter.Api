@@ -90,7 +90,8 @@ Add to /boot/config.txt
 
 ### opção3: lirc-rpi
 
-- Linux Infrared Remote Control for Raspberry Pi
+- LIRC: Linux Infrared Remote Control for Raspberry Pi
+- Bengt Martensson has a further development of [a improved Lirc driver](https://github.com/bengtmartensson/lirc_rpi "lirc_rpi") and it seems that it  replaced the [original from Aron Szabo](http://aron.ws/projects/lirc_rpi/ "original lirc for rpi"), which in turn was derived from the Lirc serial driver.
 
 #### Add to /boot/config.txt (all default settings here)
 
