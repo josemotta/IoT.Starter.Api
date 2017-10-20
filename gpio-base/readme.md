@@ -75,6 +75,7 @@ GPIO 4 of RPi header pin 7
 - key mapping configured by ir-keytable tool
 - Lirc is not required
 - GPIO pin 18 default
+- The option `driver = devinput` should be configured
 
 Add to /boot/config.txt
 
@@ -95,6 +96,7 @@ Add to /boot/config.txt
 - This seems to be the latest version available at Raspbian 4.9.54-v7+ distro and replaced the [original from Aron Szabo](http://aron.ws/projects/lirc_rpi/ "original lirc for rpi"), which in turn was derived from the Lirc serial driver.
 - Old configuration file `/etc/lirc/hardware.conf` should be converted
 - New configuration format at `/etc/lirc/lirc_options.conf`
+- The `driver = default` should be configured
 
 #### Add to /boot/config.txt (all default settings here)
 
@@ -128,7 +130,7 @@ This setup considers the following hardware:
     # tirei fora porque estava dando erro?
     #lirc_rpi gpio_in_pin=17 gpio_out_pin=16 gpio_in_pull=up
 
-#### Change /etc/lirc/lirc_options.conf
+#### Change existing /etc/lirc/lirc_options.conf
 
     from:
     driver  = devinput
@@ -138,7 +140,7 @@ This setup considers the following hardware:
     driver  = default
     device  = /dev/lirc0
 
-#### Deprecated? previous version? /etc/lirc/hardware.conf
+#### Please note that /etc/lirc/hardware.conf is not used anymore
 
     LIRCD_ARGS="--uinput"
     LOAD_MODULES=true
