@@ -92,7 +92,7 @@ Add to /boot/config.txt
 
 #### LIRC: Linux Infrared Remote Control for Raspberry Pi
 
-Bengt Martensson has a further development of a [improved Lirc driver](https://github.com/bengtmartensson/lirc_rpi "lirc_rpi") to replace the [original from Aron Szabo](http://aron.ws/projects/lirc_rpi/ "original lirc for rpi"), which in turn was derived from the Lirc serial driver. I figured out that Raspberry version 0.9.4c supports these changes. 
+Bengt Martensson has a further development of a [improved Lirc driver](https://github.com/bengtmartensson/lirc_rpi "lirc_rpi") to replace the [original from Aron Szabo](http://aron.ws/projects/lirc_rpi/ "original lirc for rpi"), which in turn was derived from the Lirc serial driver. I figured out that Raspberry Raspbian Stretch version 0.9.4c applies these changes. 
 
 - Old configuration file `/etc/lirc/hardware.conf` should be converted
 - New configuration format at `/etc/lirc/lirc_options.conf`
@@ -113,7 +113,7 @@ This setup installed Lircd version 0.9.4c, with following hardware:
     # Uncomment this to enable the lirc-rpi module
     dtoverlay=lirc-rpi,gpio_out_pin=17,gpio_in_pin=18,gpio_in_pull=up
 
-#####Lircd version 0.9.4c
+##### Lircd version 0.9.4c
 
 The parameters are configured ONLY in `/etc/config.txt`.
 
@@ -273,20 +273,7 @@ acionar controle remoto perto IR receiver e constatar na tela pulse/space:
 
     mode2 --driver default --device /dev/lirc0
 
-#### Lircd command
-
-The lirc command maybe found at `/etc/init.d/lircd`
-
-    Usage: /etc/init.d/lircd {start|stop|reload|restart|force-reload|status}
-
-Run these two commands to stop lircd and start outputting raw data from the IR receiver
-
-    /etc/init.d/lirc stop
-    mode2 -d /dev/lirc0
-
-TODO:
-
-For starting TV and then MUTE I created a small script:
+#### A script for starting TV and then mute
 
     #!/bin/bash
     /usr/bin/irsend SEND_ONCE lg_tv KEY_POWER
