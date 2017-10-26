@@ -181,7 +181,7 @@ Do not need changes. Previous version (no device-tree) required following lines:
     LIRCD_CONF=""
     LIRCMD_CONF=""
 
-## Reboot
+## Reboot and check
 
 #### Check System 
 
@@ -276,12 +276,12 @@ Do not need changes. Previous version (no device-tree) required following lines:
 
     dmesg | grep lirc 
 
-#### List devices with mode2
+#### List mode2 devices
 
     mode2 --driver default --list-devices
 	/dev/lirc0
 
-#### Testing IR input with mode2
+## Testing IR input
 
     systemctl stop lircd.socket
 	systemctl stop lircd.service
