@@ -274,7 +274,7 @@ Do not need changes. Previous version (no device-tree) required following lines:
 
     dmesg | grep lirc 
 
-#### List mode2 devices
+#### mode2 devices
 
     mode2 --driver default --list-devices
 	/dev/lirc0
