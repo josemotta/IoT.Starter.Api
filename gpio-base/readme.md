@@ -185,22 +185,39 @@ Do not need changes. Previous version (no device-tree) required following lines:
 
 #### Check System 
 
-    systemctl stop lircd.socket
-	systemctl stop lircd.service
+##### lircd.socket
 
-    mode2 --driver default --device /dev/lirc0
+	root@lumi:~# systemctl status lircd.socket
+	â lircd.socket
+	   Loaded: loaded (/lib/systemd/system/lircd.socket; enabled; vendor preset: enabled)
+	   Active: active (running) since Tue 2017-10-24 22:59:34 -02; 1 day 20h ago
+	   Listen: /run/lirc/lircd (Stream)
+	
+	Oct 24 22:59:34 lumi systemd[1]: Listening on lircd.socket.
 
-acionar controle remoto perto IR receiver e constatar na tela pulse/space:
+##### lircd.service  
 
-    space 28794
-    pulse 80
-    space 19395
-    pulse 83
-    space 402351
-    pulse 135
-    space 7085
-    pulse 85
-    space 2903
+	root@lumi:~# systemctl status lircd.service
+	â lircd.service - Flexible IR remote input/output application support
+	   Loaded: loaded (/lib/systemd/system/lircd.service; enabled; vendor preset: enabled)
+	   Active: active (running) since Tue 2017-10-24 22:59:41 -02; 1 day 20h ago
+	     Docs: man:lircd(8)
+	           http://lirc.org/html/configure.html
+	 Main PID: 422 (lircd)
+	      CPU: 7.314s
+	   CGroup: /system.slice/lircd.service
+	           ââ422 /usr/sbin/lircd --nodaemon
+	
+	Oct 24 22:59:41 lumi lircd-0.9.4c[422]: Info: Using remote: LED_44_KEY.
+	Oct 24 22:59:41 lumi lircd[422]: lircd-0.9.4c[422]: Notice: lircd(default) ready, using /var/run/lirc/lircd
+	Oct 24 22:59:41 lumi lircd-0.9.4c[422]: Notice: lircd(default) ready, using /var/run/lirc/lircd
+	Oct 24 22:59:41 lumi lircd[422]: lircd-0.9.4c[422]: Notice: accepted new client on /var/run/lirc/lircd
+	Oct 24 22:59:41 lumi lircd[422]: lircd-0.9.4c[422]: Info: Cannot configure the rc device for /dev/lirc0
+	Oct 24 22:59:41 lumi lircd[422]: lircd-0.9.4c[422]: Notice: accepted new client on /var/run/lirc/lircd
+	Oct 24 22:59:41 lumi lircd-0.9.4c[422]: Notice: accepted new client on /var/run/lirc/lircd
+	Oct 24 22:59:41 lumi lircd-0.9.4c[422]: Info: Cannot configure the rc device for /dev/lirc0
+	Oct 24 22:59:41 lumi lircd-0.9.4c[422]: Notice: accepted new client on /var/run/lirc/lircd
+	Oct 24 22:59:41 lumi lircd-0.9.4c[422]: Notice: accepted new client on /var/run/lirc/lircd
 
 #### checking GPIO ports - vcdbg
 
@@ -259,12 +276,29 @@ acionar controle remoto perto IR receiver e constatar na tela pulse/space:
 
     dmesg | grep lirc 
 
-#### Tests with mode2
+#### List devices with mode2
 
     mode2 --driver default --list-devices
 	/dev/lirc0
 
+#### Testing IR input with mode2
+
+    systemctl stop lircd.socket
+	systemctl stop lircd.service
+
     mode2 --driver default --device /dev/lirc0
+
+acionar controle remoto perto IR receiver e constatar na tela pulse/space:
+
+    space 28794
+    pulse 80
+    space 19395
+    pulse 83
+    space 402351
+    pulse 135
+    space 7085
+    pulse 85
+    space 2903
 
 #### A script for starting TV and then mute
 
