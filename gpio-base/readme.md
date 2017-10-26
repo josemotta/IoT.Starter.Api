@@ -40,6 +40,11 @@
 
 ## 1-wire + Temp Sensor DS18B20
 
+This setup considers following hardware:
+
+- [Dallas DS18B20](https://cdn.sparkfun.com/datasheets/Sensors/Temp/DS18B20.pdf "DS18B20") Programmable Resolution 1-Wire Digital Thermometer
+- Keyes assembly includes pull up and led
+
 ### 1-Wire 
 
 Append to /boot/config.txt (no spaces) and reboot:
