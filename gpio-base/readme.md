@@ -232,10 +232,11 @@ acionar controle remoto perto IR receiver e constatar na tela pulse/space:
 
 #### gpio
     cat /sys/kernel/debug/gpio    
-    GPIOs 0-53, bcm2708_gpio:
-     gpio-16  (led0) out hi
-     gpio-17  (lirc_rpi ir/out ) in  lo
-     gpio-18  (lirc_rpi ir/in  ) in  lo
+	gpiochip0: GPIOs 0-53, parent: platform/3f200000.gpio, pinctrl-bcm2835:
+	 gpio-4   (                    |w1                  ) in  hi
+	 gpio-5   (                    |w1 pullup           ) out hi
+	 gpio-35  (                    |?                   ) in  hi
+	 gpio-47  (                    |?                   ) out lo
 #### devices
     mode2 --driver default --list-devices
     /dev/lirc0
