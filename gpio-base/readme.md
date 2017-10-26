@@ -204,38 +204,25 @@ acionar controle remoto perto IR receiver e constatar na tela pulse/space:
 
 #### checking GPIO ports - vcdbg
 
-    root@lumi:~# vcdbg log msg |& grep -v -E "(HDMI|gpioman|clock)"
-    000965.347: brfs: File read: /mfs/sd/config.txt
-    000966.308: brfs: File read: 1770 bytes
-    001016.965: brfs: File read: /mfs/sd/config.txt
-    001307.363: *** Restart logging
-    001307.399: brfs: File read: 1770 bytes
-    001309.355: brfs: File read: /mfs/sd/cmdline.txt
-    001309.419: Read command line from file 'cmdline.txt'
-    dwc_otg.lpm_enable=0 console=serial0,115200 console=tty1 root=PARTUUID=fe04de35-02 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait
-    001309.675: brfs: File read: 142 bytes
-    001642.535: brfs: File read: /mfs/sd/kernel7.img
-    001642.560: Loading 'kernel7.img' to 0x8000 size 0x45f7b8
-    001646.188: No kernel trailer - assuming DT-capable
-    001646.217: brfs: File read: 4585400 bytes
-    001649.785: brfs: File read: /mfs/sd/bcm2709-rpi-2-b.dtb
-    001649.809: Loading 'bcm2709-rpi-2-b.dtb' to 0x4677b8 size 0x4135
-    001764.018: brfs: File read: 16693 bytes
-    001766.955: brfs: File read: /mfs/sd/config.txt
-    001767.540: brfs: File read: 1770 bytes
-    001778.584: brfs: File read: /mfs/sd/overlays/lirc-rpi.dtbo
-    001785.509: Loaded overlay 'lirc-rpi'
-    001785.527: dtparam: gpio_out_pin=17
-    001786.038: dtparam: gpio_in_pin=18
-    001786.554: dtparam: gpio_in_pull=up
-    001787.171: dtparam: audio=on
-    001839.950: brfs: File read: 1348 bytes
-    001856.516: brfs: File read: /mfs/sd/overlays/w1-gpio-pullup.dtbo
-    001863.254: Loaded overlay 'w1-gpio-pullup'
-    001863.270: dtparam: gpiopin=4
-    003028.279: Device tree loaded to 0x2effb800 (size 0x47ed)
-    004532.237: vchiq_core: vchiq_init_state: slot_zero = 0xfad80000, is_master = 1
-    004543.535: TV service:host side not connected, dropping notification 0x00000002, 0x00000002, 0x00000044
+    root@lumi:~# vcdbg log msg |& grep -v -E "(HDMI|gpioman|clock|brfs)"
+	001307.388: *** Restart logging
+	001309.444: Read command line from file 'cmdline.txt'
+	dwc_otg.lpm_enable=0 console=serial0,115200 console=tty1 root=PARTUUID=fe04de35-02 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait
+	001642.582: Loading 'kernel7.img' to 0x8000 size 0x45f7b8
+	001646.210: No kernel trailer - assuming DT-capable
+	001649.832: Loading 'bcm2709-rpi-2-b.dtb' to 0x4677b8 size 0x4135
+	001785.536: Loaded overlay 'lirc-rpi'
+	001785.554: dtparam: gpio_out_pin=17
+	001786.070: dtparam: gpio_in_pin=18
+	001786.586: dtparam: gpio_in_pull=up
+	001787.202: dtparam: audio=on
+	001863.296: Loaded overlay 'w1-gpio-pullup'
+	001863.312: dtparam: gpiopin=4
+	003032.644: Device tree loaded to 0x2effb800 (size 0x47ed)
+	004537.231: vchiq_core: vchiq_init_state: slot_zero = 0xfad80000, is_master = 1
+	004548.430: TV service:host side not connected, dropping notification 0x00000002, 0x00000002, 0x00000044
+	385090.775: TV service:host side not connected, dropping notification 0x00000001, 0x00000002, 0x00000000
+	386518.244: TV service:host side not connected, dropping notification 0x00000002, 0x00000002, 0x00000044
 
 #### lsmod
     lsmod | grep lirc
