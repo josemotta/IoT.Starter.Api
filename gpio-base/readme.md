@@ -270,9 +270,46 @@ Do not need changes. Previous version (no device-tree) required following lines:
 	B: ABS=1 0
 	B: MSC=10
 
-    journalctl -x
+#### journalctl
 
-    dmesg | grep lirc 
+	root@lumi:~# journalctl -b 0 /usr/sbin/lircd
+	-- Logs begin at Tue 2017-10-24 22:59:32 -02, end at Thu 2017-10-26 19:27:50 -02. --
+	Oct 24 22:59:41 lumi lircd-0.9.4c[422]: Info: lircd:  Opening log, level: Info
+	Oct 24 22:59:41 lumi lircd-0.9.4c[422]: Info: Initial device: /dev/lirc0
+	Oct 24 22:59:41 lumi lircd-0.9.4c[422]: Info: Initial device: /dev/lirc0
+	Oct 24 22:59:41 lumi lircd[422]: lircd-0.9.4c[422]: Info: lircd:  Opening log, level: Info
+	Oct 24 22:59:41 lumi lircd-0.9.4c[422]: Info: lircd:  Opening log, level: Info
+	Oct 24 22:59:41 lumi lircd[422]: lircd-0.9.4c[422]: Notice: Using systemd fd
+	Oct 24 22:59:41 lumi lircd[422]: lircd-0.9.4c[422]: Warning: Running as root
+	Oct 24 22:59:41 lumi lircd-0.9.4c[422]: Notice: Using systemd fd
+	Oct 24 22:59:41 lumi lircd-0.9.4c[422]: Warning: Running as root
+	Oct 24 22:59:41 lumi lircd[422]: lircd-0.9.4c[422]: Info: Using remote: LED_24_KEY.
+	Oct 24 22:59:41 lumi lircd-0.9.4c[422]: Info: Using remote: LED_24_KEY.
+	Oct 24 22:59:41 lumi lircd[422]: lircd-0.9.4c[422]: Info: Using remote: LED_44_KEY.
+	Oct 24 22:59:41 lumi lircd-0.9.4c[422]: Info: Using remote: LED_44_KEY.
+	Oct 24 22:59:41 lumi lircd[422]: lircd-0.9.4c[422]: Notice: lircd(default) ready, using /var/run/lirc/lircd
+	Oct 24 22:59:41 lumi lircd-0.9.4c[422]: Notice: lircd(default) ready, using /var/run/lirc/lircd
+	Oct 24 22:59:41 lumi lircd[422]: lircd-0.9.4c[422]: Notice: accepted new client on /var/run/lirc/lircd
+	Oct 24 22:59:41 lumi lircd[422]: lircd-0.9.4c[422]: Info: Cannot configure the rc device for /dev/lirc0
+	Oct 24 22:59:41 lumi lircd[422]: lircd-0.9.4c[422]: Notice: accepted new client on /var/run/lirc/lircd
+	Oct 24 22:59:41 lumi lircd-0.9.4c[422]: Notice: accepted new client on /var/run/lirc/lircd
+	Oct 24 22:59:41 lumi lircd-0.9.4c[422]: Info: Cannot configure the rc device for /dev/lirc0
+	Oct 24 22:59:41 lumi lircd-0.9.4c[422]: Notice: accepted new client on /var/run/lirc/lircd
+	Oct 24 22:59:41 lumi lircd-0.9.4c[422]: Notice: accepted new client on /var/run/lirc/lircd
+
+#### dmesg | grep lirc 
+
+	root@lumi:~# dmesg | grep lirc
+	[    5.839181] lirc_dev: IR Remote Control driver registered, major 243
+	[    5.845182] lirc_rpi: module is from the staging directory, the quality is unknown, you have been warned.
+	[    6.936736] lirc_rpi: auto-detected active low receiver on GPIO pin 18
+	[    6.947172] lirc_rpi lirc_rpi: lirc_dev: driver lirc_rpi registered at minor = 0
+	[    6.947186] lirc_rpi: driver registered!
+	[   13.863775] input: lircd-uinput as /devices/virtual/input/input2
+	[46081.760131] lirc_rpi: AIEEEE: 1 1 59f095fa 59f095dc 85350 be7dd
+	[46102.560135] lirc_rpi: AIEEEE: 0 0 59f0960f 59f095ff 54590 93bc9
+	[60477.200408] lirc_rpi: AIEEEE: 1 1 59f0ce35 59f0ce00 db1dc 23902
+	[60567.675029] lirc_rpi: AIEEEE: 0 0 59f0ce90 59f0ce47 5abef 235bdd
 
 #### mode2 devices
 
