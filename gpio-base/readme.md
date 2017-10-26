@@ -183,9 +183,7 @@ Do not need changes. Previous version (no device-tree) required following lines:
 
 ## Reboot and check
 
-#### Check System 
-
-##### lircd.socket
+#### lircd.socket
 
 	root@lumi:~# systemctl status lircd.socket
 	â lircd.socket
@@ -195,7 +193,7 @@ Do not need changes. Previous version (no device-tree) required following lines:
 	
 	Oct 24 22:59:34 lumi systemd[1]: Listening on lircd.socket.
 
-##### lircd.service  
+#### lircd.service  
 
 	root@lumi:~# systemctl status lircd.service
 	â lircd.service - Flexible IR remote input/output application support
