@@ -298,6 +298,8 @@ acionar controle remoto perto IR receiver e constatar na tela pulse/space:
     pulse 85
     space 2903
 
+## Testing IR output
+
 #### A script for starting TV and then mute
 
     #!/bin/bash
