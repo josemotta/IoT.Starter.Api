@@ -352,9 +352,22 @@ However, for this to work you need to configure lirc_options.conf with driver an
 - [lirc24.conf](https://github.com/josemotta/Api/blob/master/gpio-base/lirc24.conf "lirc24"): 24 Key LED Controller
 - [lirc44.conf](https://github.com/josemotta/Api/blob/master/gpio-base/lirc44.conf "lirc44"): 44 Key LED Controller
 
-#### Command for toggling lights
+#### Commanding lights
 
-	root@lumi:~# irsend SEND_ONCE LED_44_KEY POWER
+	# turn on
+	pi@lumi:~ $ irsend SEND_ONCE LED_44_KEY POWER
+	#change color
+	pi@lumi:~ $ irsend SEND_ONCE LED_44_KEY WHITE
+	pi@lumi:~ $ irsend SEND_ONCE LED_44_KEY CYAN
+	pi@lumi:~ $ irsend SEND_ONCE LED_44_KEY WHITE
+	# lights up and down
+	pi@lumi:~ $ irsend --count=10 SEND_ONCE LED_44_KEY BRIGHT_UP
+	pi@lumi:~ $ irsend --count=10 SEND_ONCE LED_44_KEY BRIGHT_UP
+	pi@lumi:~ $ irsend --count=20 SEND_ONCE LED_44_KEY BRIGHT_DOWN
+	pi@lumi:~ $ irsend --count=10 SEND_ONCE LED_44_KEY BRIGHT_UP
+
+	# turn off
+	pi@lumi:~ $ irsend SEND_ONCE LED_44_KEY POWER
 
 #### A script for starting TV and then mute
 
