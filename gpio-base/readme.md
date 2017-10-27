@@ -337,6 +337,21 @@ acionar controle remoto perto IR receiver e constatar na tela pulse/space:
 
 ## Testing IR output
 
+#### irw
+
+irw reads data from a socket created by lircd. To get irw working you need to start lircd:
+
+- lircd reads raw data from /dev/lirc0
+- decodes it and makes it available on /var/run/lirc/lircd
+- this is where irw expects decoded data
+
+However, for this to work you need to configure lirc_options.conf with driver and device and also add the proper config file for your remote to /etc/lirc/lircd.conf.d
+
+#### /etc/lirc/lircd.conf.d
+
+- [lirc24.conf](https://github.com/josemotta/Api/blob/master/gpio-base/lirc24.conf "lirc24"): 24 Key LED Controller
+- [lirc44.conf](https://github.com/josemotta/Api/blob/master/gpio-base/lirc44.conf "lirc44"): 44 Key LED Controller
+
 #### A script for starting TV and then mute
 
     #!/bin/bash
