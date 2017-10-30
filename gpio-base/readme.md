@@ -106,6 +106,15 @@ Add to /boot/config.txt
 
 ### option 3: lirc-rpi
 
+This setup installs Lirc with both IR input and output, the prototype below also shows the temperature sensor.
+
+![prototype-2](https://i.imgur.com/Ops6Wit.png)
+
+- IR input: Keyes IR input 838B, connected at GPIO18 (BCM 12)
+- IR output: IR led driven by a 2N3904 transistor, connected at GPIO17 (BCM 11)
+
+![IR output](https://i.imgur.com/cbiJUpb.png)
+
 #### LIRC: Linux Infrared Remote Control for Raspberry Pi
 
 Bengt Martensson has a further development of a [improved Lirc driver](https://github.com/bengtmartensson/lirc_rpi "lirc_rpi") to replace the [original from Aron Szabo](http://aron.ws/projects/lirc_rpi/ "original lirc for rpi"), which in turn was derived from the Lirc serial driver. I figured out that Raspberry Raspbian Stretch Lircd version 0.9.4c applies some of these changes. 
@@ -118,11 +127,6 @@ Bengt Martensson has a further development of a [improved Lirc driver](https://g
 #### Lircd setup
 
     sudo apt-get install lirc
-
-This setup installs Lircd with following hardware:
-
-- IR input: Keyes IR input 838B, connected at GPIO18 (BCM 12)
-- IR output: IR led driven by a 2N3904 transistor, connected at GPIO17 (BCM 11)
 
 #### Add to /boot/config.txt
 
