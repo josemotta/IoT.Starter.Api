@@ -1,43 +1,5 @@
 ## RPI INFRARED SETUP
 
-## Docker
-
-#### P&D Windows 10 x64
-
-    docker container prune
-    docker image prune
-    docker container ls -a
-    docker-compose -f docker-compose.ci.build.yml build
-    docker push josemottalopes/io.swagger:latest
-
-#### Run Raspberry Pi arm
-
-    docker run --privileged -d -p 5000:5000 josemottalopes/io.swagger:latest
-
-#### Test
-
-    http://lumi:5000/swagger/ui/index.html
-
-#### Util
-    ip a
-    docker network ls
-    docker network inspect host
-    
-#### Remove dangling images
-
-    docker images -f dangling=true
-    docker rmi $(docker images -f dangling=true -q)
-
-    netstat -l	listening
-    netstat -lt	listening TCP
-    netstat -at	TCP
-    netstat -au	UDP
-    netstat -st	statistics TCP
-    netstat -ie	ifconfig
-    netstat -g	multicast group
-    netstat -r	routing
-    netstat -tp	service name
-
 ## Temperature Sensor DS18B20 1-wire
 
 This setup considers RPI attached to the following hardware sensor:
@@ -412,4 +374,42 @@ TODO: commands below maybe captured and manually edited to the configuration fil
     /usr/bin/irsend SEND_ONCE lg_tv KEY_POWER
     sleep 10
     /usr/bin/irsend SEND_ONCE lg_tv KEY_MUTE
+
+## Docker
+
+#### P&D Windows 10 x64
+
+    docker container prune
+    docker image prune
+    docker container ls -a
+    docker-compose -f docker-compose.ci.build.yml build
+    docker push josemottalopes/io.swagger:latest
+
+#### Run Raspberry Pi arm
+
+    docker run --privileged -d -p 5000:5000 josemottalopes/io.swagger:latest
+
+#### Test
+
+    http://lumi:5000/swagger/ui/index.html
+
+#### Util
+    ip a
+    docker network ls
+    docker network inspect host
+    
+#### Remove dangling images
+
+    docker images -f dangling=true
+    docker rmi $(docker images -f dangling=true -q)
+
+    netstat -l	listening
+    netstat -lt	listening TCP
+    netstat -at	TCP
+    netstat -au	UDP
+    netstat -st	statistics TCP
+    netstat -ie	ifconfig
+    netstat -g	multicast group
+    netstat -r	routing
+    netstat -tp	service name
 
