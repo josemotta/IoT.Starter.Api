@@ -350,8 +350,6 @@ acionar controle remoto perto IR receiver e constatar na tela pulse/space:
     pulse 85
     space 2903
 
-## Testing IR output
-
 #### irw
 
 irw reads data from a socket created by lircd. To get irw working you need to start lircd:
@@ -366,6 +364,22 @@ However, for this to work you need to configure lirc_options.conf with driver an
 
 - [lirc24.conf](https://github.com/josemotta/Api/blob/master/gpio-base/lirc24.conf "lirc24"): 24 Key LED Controller
 - [lirc44.conf](https://github.com/josemotta/Api/blob/master/gpio-base/lirc44.conf "lirc44"): 44 Key LED Controller
+
+## Capturing IR from remotes
+
+Following CNXSoft article [How to Control Your Air Conditioner with Raspberry Pi Board and ANAVI Infrared pHAT](https://www.cnx-software.com/2017/03/12/how-to-control-your-air-conditioner-with-raspberry-pi-board-and-anavi-infrared-phat/) the IR input maybe captured from any air conditioner, for example, my split models Comfee at home with remote control ref. RG06A6/BGE.
+
+#### /etc/lirc/lircd.conf.d/lircd-air.conf
+
+TODO: commands below maybe captured and manually edited to the configuration file. These commands, together with temperature sensor, should be used for automatic temperature control inside the environment.
+
+- low fan
+- high fan
+- lowest temperature (17)
+- best temperature (22)
+- off
+
+## Testing IR output
 
 #### Commanding lights
 
