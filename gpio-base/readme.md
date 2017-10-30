@@ -369,6 +369,10 @@ However, for this to work you need to configure lirc_options.conf with driver an
 
 Following CNXSoft article [How to Control Your Air Conditioner with Raspberry Pi Board and ANAVI Infrared pHAT](https://www.cnx-software.com/2017/03/12/how-to-control-your-air-conditioner-with-raspberry-pi-board-and-anavi-infrared-phat/) the IR input maybe captured from any air conditioner, for example, split model Comfee with remote control ref. RG06A6/BGE.
 
+More info also at [ANAVI Infrared pHAT](https://github.com/AnaviTechnology/anavi-docs/blob/master/anavi-infrared-phat/anavi-infrared-phat.md "ANAVI Infrared pHAT") website.
+
+
+
 #### /etc/lirc/lircd.conf.d/lircd-air.conf
 
 TODO: commands below maybe captured and manually edited to the configuration file. These commands, together with temperature sensor, should be used for automatic temperature control inside the environment.
