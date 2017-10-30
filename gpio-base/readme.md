@@ -1,4 +1,4 @@
-## RPI INFRARED SETUP
+# RPI SETUP
 
 ## Temperature Sensor DS18B20 1-wire
 
