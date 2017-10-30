@@ -367,7 +367,7 @@ However, for this to work you need to configure lirc_options.conf with driver an
 
 ## Capturing IR from remotes
 
-Following CNXSoft article [How to Control Your Air Conditioner with Raspberry Pi Board and ANAVI Infrared pHAT](https://www.cnx-software.com/2017/03/12/how-to-control-your-air-conditioner-with-raspberry-pi-board-and-anavi-infrared-phat/) the IR input maybe captured from any air conditioner, for example, my split models Comfee at home with remote control ref. RG06A6/BGE.
+Following CNXSoft article [How to Control Your Air Conditioner with Raspberry Pi Board and ANAVI Infrared pHAT](https://www.cnx-software.com/2017/03/12/how-to-control-your-air-conditioner-with-raspberry-pi-board-and-anavi-infrared-phat/) the IR input maybe captured from any air conditioner, for example, split model Comfee with remote control ref. RG06A6/BGE.
 
 #### /etc/lirc/lircd.conf.d/lircd-air.conf
 
