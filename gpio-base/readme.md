@@ -38,9 +38,11 @@
     netstat -r	routing
     netstat -tp	service name
 
-## 1-wire + Temp Sensor DS18B20
+## Temperature Sensor DS18B20 1-wire
 
-This setup considers following hardware:
+This setup considers RPI attached to the following hardware sensor:
+
+![DS18B20](https://i.imgur.com/MgeMeal.png)
 
 - [Dallas DS18B20](https://cdn.sparkfun.com/datasheets/Sensors/Temp/DS18B20.pdf "DS18B20") Programmable Resolution 1-Wire Digital Thermometer
 - Keyes assembly includes pull up and led
@@ -72,20 +74,29 @@ GPIO 4 of RPi header pin 7
 
 ## Infrared + Keyes IR input 838B
 
-### opção1: gpio-ir
+From 0.9.4+ LIRC is distributed with a default configuration based on the `devinput` driver. This should work out of the box with the following limitations:
+
+- There must be exactly one capture device supported by the kernel
+- The remote(s) used must be supported by the kernel.
+- There is no need to do IR blasting (i. e., to send IR data).
+
+Linux Raspbian 4.9.54-v7+ supports several IR drive options. First option is the best  if you just need IR input for remote control because `devinput` drive is already set. There is a second option to shutdown the RPI through a GPIO pin. If IR output is needed then then you should follow option 3, in order to fully install and configure the Linux Infrared Remote Control for Raspberry Pi. 
+
+### option 1: gpio-ir
 
 - gpio-ir uses the upstream Linux gpio_rc_recv driver and supports in-kernel decoding (aka ir-keytable configuration)
 - gpio-r uses kernel embedded IR software and keys directly to /dev/input/event* device
 - all decoding is done by the kernel and key mapping is configured by ir-keytable tool
-- Lirc is not required
+- Lirc installation is not required
 - GPIO pin 18 default
 - The option `driver = devinput` should be configured
+- Only for IR input. If IR output blast is required then use option 3 
 
 Add to /boot/config.txt
 
     dtoverlay=gpio-ir,gpio_pin=18,gpio_pull=down,rc-map-name=rc-rc6-mce
 
-### opção2: gpio-shutdown
+### option 2: gpio-shutdown
 
 - Initiates a shutdown when GPIO changes
 
@@ -93,25 +104,25 @@ Add to /boot/config.txt
 
     dtoverlay=gpio-shutdown,gpio_pin=3,active_low=1,gpio_pull=up
 
-### opção3: lirc-rpi
+### option 3: lirc-rpi
 
 #### LIRC: Linux Infrared Remote Control for Raspberry Pi
 
-Bengt Martensson has a further development of a [improved Lirc driver](https://github.com/bengtmartensson/lirc_rpi "lirc_rpi") to replace the [original from Aron Szabo](http://aron.ws/projects/lirc_rpi/ "original lirc for rpi"), which in turn was derived from the Lirc serial driver. I figured out that Raspberry Raspbian Stretch version 0.9.4c applies these changes. 
+Bengt Martensson has a further development of a [improved Lirc driver](https://github.com/bengtmartensson/lirc_rpi "lirc_rpi") to replace the [original from Aron Szabo](http://aron.ws/projects/lirc_rpi/ "original lirc for rpi"), which in turn was derived from the Lirc serial driver. I figured out that Raspberry Raspbian Stretch Lircd version 0.9.4c applies some of these changes. 
 
 - Old configuration file `/etc/lirc/hardware.conf` should be converted
 - New configuration format at `/etc/lirc/lirc_options.conf`
 - Add custom devices to /etc/lirc/lircd.conf.d/
-- IR output requires that configuration changes `driver = default` 
+- IR output requires changes to configuration: `driver = default` 
 
-#### Lircd setup for Raspberry Pi 2 model B
+#### Lircd setup
 
     sudo apt-get install lirc
 
-This setup installed Lircd version 0.9.4c, with following hardware:
+This setup installs Lircd with following hardware:
 
-- IR input: Keyes IR input 838B connected at GPIO18 (BCM 12)
-- IR output: a IR led driven by a 2N3904 transistor connected at GPIO17 (BCM 11)
+- IR input: Keyes IR input 838B, connected at GPIO18 (BCM 12)
+- IR output: IR led driven by a 2N3904 transistor, connected at GPIO17 (BCM 11)
 
 #### Add to /boot/config.txt
 
@@ -164,14 +175,14 @@ Please see details below, extracted from [The Overlay and Parameter Reference](h
 
 #### /etc/modules
 
-Do not need changes. Previous version (no device-tree) required following lines: 
+Do not need changes at current Lircd version 0.9.4c, although previous version (no device-tree) required following lines: 
 
     lirc_dev
     lirc_rpi 
 
 	#lirc_rpi gpio_in_pin=18 gpio_out_pin=17 gpio_in_pull=up
 
-#### /etc/lirc/hardware.conf is deprecated
+#### /etc/lirc/hardware.conf is deprecated at Lircd version 0.9.4c
 
     LIRCD_ARGS="--uinput"
     LOAD_MODULES=true
