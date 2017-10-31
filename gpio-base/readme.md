@@ -335,7 +335,7 @@ More info:
 
 - [ANAVI Infrared pHAT](https://github.com/AnaviTechnology/anavi-docs/blob/master/anavi-infrared-phat/anavi-infrared-phat.md "ANAVI Infrared pHAT") website.
 - Leon Anavi template for [lircd-acpanasonic.conf](https://gist.github.com/leon-anavi/6b7d6c2daaefef5b01054a8b8a0397ae "lircd-acpanasonic.conf").
-
+- General remote capture at [KODI HOW-TO:Set up LIRC](http://kodi.wiki/view/HOW-TO:Set_up_LIRC "KODI")
 
 
 
@@ -348,6 +348,25 @@ TODO: commands below maybe captured and manually edited to the configuration fil
 - lowest temperature (17)
 - best temperature (22)
 - off
+
+#### irdb-get
+
+As reported by [ArchLinux Lirc](https://wiki.archlinux.org/index.php/LIRC "ArchLinux Lirc"), apps should search the [remotes database](http://lirc-remotes.sourceforge.net/remotes-table.html "DB") in order to obtain the definition of scancodes to keymaps required to allow LIRC to manage a remote.
+
+	$ irdb-get find stream
+	atiusb/atiusb.lircd.conf
+	digital_stream/DTX9900.lircd.conf
+	snapstream/Firefly-Mini.lircd.conf
+	streamzap/PC_Remote.lircd.conf
+	streamzap/streamzap.lircd.conf
+	x10/atiusb.lircd.conf
+	
+	$ irdb-get download streamzap/streamzap.lircd.conf 
+	Downloaded sourceforge.net/p/lirc-remotes/code/ci/master/tree/remotes/streamzap/streamzap.lircd.conf as streamzap.lircd.conf
+
+Once identified, copy the needed conf to /etc/lirc/lircd.conf.d/ to allow the daemon to initialize support for it.
+
+	# cp streamzap.lircd.conf /etc/lirc/lircd.conf.d/
 
 ## Testing IR output
 
