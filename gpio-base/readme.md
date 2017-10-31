@@ -362,7 +362,8 @@ As reported by [ArchLinux Lirc](https://wiki.archlinux.org/index.php/LIRC "ArchL
 	x10/atiusb.lircd.conf
 	
 	$ irdb-get download streamzap/streamzap.lircd.conf 
-	Downloaded sourceforge.net/p/lirc-remotes/code/ci/master/tree/remotes/streamzap/streamzap.lircd.conf as streamzap.lircd.conf
+	Downloaded sourceforge.net/p/lirc-remotes/code/ci/master/tree/remotes/streamzap/streamzap.lircd.conf
+	as streamzap.lircd.conf
 
 Once identified, copy the needed conf to /etc/lirc/lircd.conf.d/ to allow the daemon to initialize support for it.
 
