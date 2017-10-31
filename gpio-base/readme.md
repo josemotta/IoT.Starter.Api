@@ -351,7 +351,7 @@ TODO: commands below maybe captured and manually edited to the configuration fil
 
 #### irdb-get
 
-As reported by [ArchLinux Lirc](https://wiki.archlinux.org/index.php/LIRC "ArchLinux Lirc"), apps should search the [remotes database](http://lirc-remotes.sourceforge.net/remotes-table.html "DB") in order to obtain the definition of scancodes to keymaps required to allow LIRC to manage a remote.
+As reported by [ArchLinux Lirc](https://wiki.archlinux.org/index.php/LIRC "ArchLinux Lirc"), apps are able to search the [remotes database](http://lirc-remotes.sourceforge.net/remotes-table.html "DB") in order to obtain the definition of scancodes to keymaps required to allow LIRC to manage a remote.
 
 	$ irdb-get find stream
 	atiusb/atiusb.lircd.conf
