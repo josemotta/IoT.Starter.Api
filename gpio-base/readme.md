@@ -79,7 +79,7 @@ This setup installs Lirc with both IR input and output, the prototype below also
 
 #### LIRC: Linux Infrared Remote Control for Raspberry Pi
 
-Bengt Martensson has a further development of a [improved Lirc driver](https://github.com/bengtmartensson/lirc_rpi "lirc_rpi") to replace the [original from Aron Szabo](http://aron.ws/projects/lirc_rpi/ "original lirc for rpi"), which in turn was derived from the Lirc serial driver. I figured out that Raspberry Raspbian Stretch Lircd version 0.9.4c applies some of these changes. 
+Bengt Martensson has a further development of a [improved Lirc driver](https://github.com/bengtmartensson/lirc_rpi "lirc_rpi") to replace the [original from Aron Szabo](http://aron.ws/projects/lirc_rpi/ "original lirc for rpi"), which in turn was derived from the Lirc serial driver. I figured out that Raspberry Raspbian Stretch Lircd version 0.9.4c applied some of these changes. 
 
 - Old configuration file `/etc/lirc/hardware.conf` should be converted
 - New configuration format at `/etc/lirc/lirc_options.conf`
