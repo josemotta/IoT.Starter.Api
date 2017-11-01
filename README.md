@@ -38,30 +38,34 @@ A multi-stage docker image build is accomplished at the speedy Windows x64 machi
 - Access pi-server-stub via browser  
 - http://pi:5000/swagger/ui/index.html 
 
-#### aspnetcore: testing the api at port:5000
+## aspnetcore
 
-##### x64: Build 
+Testing API at port:5000
+
+#### x64: Build 
 
 	cd /aspnetcore
 	docker-compose -f docker-compose.ci.build.yml build   
 	docker push josemottalopes/io.swagger:latest  
 
-##### arm: RaspberryPi (hostname "pi")  
+#### arm: RaspberryPi (hostname "pi")  
 `docker run --privileged -p 5000:5000 josemottalopes/io.swagger`  
 
-##### any browser: Client Test
+#### any browser: Client Test
     http://pi:5000/swagger/ui/index.html
 
-#### home-web: starter for Home project at port:6000
+## home-web
 
-##### x64: Build 
+Starter for Home project at port:6000
 
-	cd /aspnetcore
+#### x64: Build 
+
+	cd /home-web
 	docker-compose -f docker-compose.ci.build.yml build   
-	docker push josemottalopes/io.swagger:latest  
+	docker push josemottalopes/home-web:latest  
 
-##### arm: RaspberryPi (hostname "pi")  
+#### arm: RaspberryPi (hostname "pi")  
 `docker run --privileged -p 6000:6000 josemottalopes/io.swagger`  
 
-##### any browser: Client Test
+#### any browser: Client Test
     http://pi:6000/swagger/ui/index.html
