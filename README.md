@@ -65,7 +65,7 @@ Starter for Home project at port:6000
 	docker push josemottalopes/home-web:latest  
 
 #### arm: RaspberryPi (hostname "pi")  
-`docker run --privileged -p 6000:6000 josemottalopes/io.swagger`  
+`docker run --privileged -p 6000:6000 josemottalopes/home-web`  
 
 #### any browser: Client Test
     http://pi:6000/swagger/ui/index.html

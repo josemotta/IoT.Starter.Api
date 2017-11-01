@@ -17,10 +17,10 @@ namespace IO.Swagger
                 {
                     // options.ThreadCount = 4;
                     // options.UseHttps("cert.pfx", "certpassword");
-                    options.NoDelay = true;
-                    options.UseConnectionLogging();
+                    // options.NoDelay = true;
+                    // options.UseConnectionLogging();
                 })
-                .UseUrls("http://+:5000" /*, "https://+:5001" */)
+                .UseUrls("http://+:6000" /*, "https://+:5001" */)
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
