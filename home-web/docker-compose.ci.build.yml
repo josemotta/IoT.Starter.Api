@@ -2,7 +2,7 @@ version: '3'
 
 services:
   ci-build:
-    image: josemottalopes/home
+    image: josemottalopes/home-web
     build:
       context: ./src/IO.Swagger
       dockerfile: Dockerfile
