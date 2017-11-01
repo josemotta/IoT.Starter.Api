@@ -7,7 +7,7 @@ FROM josemottalopes/gpio-base
 WORKDIR /app
 EXPOSE 5000
 ENV DOTNET_CLI_TELEMETRY_OPTOUT 1
-ENV ASPNETCORE_URLS "http://*:6000"
+ENV ASPNETCORE_URLS "http://*:5010"
 COPY --from=builder /app/obj/Docker/publish/ /app/
 ENTRYPOINT /app/IO.Swagger
 

@@ -71,8 +71,8 @@ namespace IO.Swagger
                 options.SingleApiVersion(new Info
                 {
                     Version = "v1",
-                    Title = "IO.Swagger",
-                    Description = "IO.Swagger (ASP.NET Core 1.0)"
+                    Title = "Home",
+                    Description = "Home (ASP.NET Core 2.0)"
                 });
 
                 options.DescribeAllEnumsAsStrings();

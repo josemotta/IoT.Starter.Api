@@ -11,7 +11,7 @@ services:
     working_dir: /src
 #   command: /bin/bash -c "dotnet restore ./IO.Swagger.sln -r linux-arm && dotnet publish ./IO.Swagger.sln -c Release -r linux-arm -o ./obj/Docker/publish"
     ports:
-    - "6000:6000"
+    - "5010:5010"
     network_mode: bridge
 #networks:
 #  default:
