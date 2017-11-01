@@ -56,7 +56,7 @@ Testing API at port:5000
 
 ## home-web
 
-Starter for Home project at port:6000
+Starter for Home project at port:5010
 
 #### x64: Build 
 
@@ -65,7 +65,7 @@ Starter for Home project at port:6000
 	docker push josemottalopes/home-web:latest  
 
 #### arm: RaspberryPi (hostname "pi")  
-`docker run --privileged -p 6000:6000 josemottalopes/home-web`  
+`docker run --privileged -p 5010:5010 josemottalopes/home-web`  
 
 #### any browser: Client Test
-    http://pi:6000/swagger/ui/index.html
+    http://pi:5010/swagger/ui/index.html
