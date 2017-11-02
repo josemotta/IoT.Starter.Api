@@ -52,11 +52,11 @@ https://hub.docker.com/r/josemottalopes/io.swagger/
 	docker-compose -f docker-compose.ci.build.yml build   
 	docker push josemottalopes/io.swagger:latest  
 
-#### arm: RaspberryPi (hostname "pi")  
+#### arm: RaspberryPi (hostname "rpi")  
 `docker run --privileged -p 5000:5000 -d josemottalopes/io.swagger`  
 
 #### any browser: Client Test
-    http://pi:5000/swagger/ui/index.html
+    http://rpi:5000/swagger/ui/index.html
 
 ## home-web
 
@@ -73,11 +73,11 @@ https://hub.docker.com/r/josemottalopes/home-web/
 	docker-compose -f docker-compose.ci.build.yml build   
 	docker push josemottalopes/home-web:latest  
 
-#### arm: RaspberryPi (hostname "pi")  
+#### arm: RaspberryPi (hostname "rpi")  
 `docker run --privileged -p 5010:5010 -d josemottalopes/home-web`  
 
 #### any browser: Client Test
-    http://pi:5010/swagger/ui/index.html
+    http://rpi:5010/swagger/ui/index.html
 
 ## Both projects running at RPI
 
