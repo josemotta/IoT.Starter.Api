@@ -61,7 +61,7 @@ https://hub.docker.com/r/josemottalopes/io.swagger/
 Starter for Home project at port:5010
 
 **Links:**  
-https://app.swaggerhub.com/apis/josemottalopes/home-api/1.0.1 
+https://app.swaggerhub.com/apis/josemottalopes/home-api/1.0.1  
 https://github.com/josemotta/Api  
 https://hub.docker.com/r/josemottalopes/home-web/
 
