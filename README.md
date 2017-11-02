@@ -25,7 +25,7 @@ A multi-stage docker image build is accomplished at the speedy Windows x64 machi
 - Compiles at x64 machine for linux-arm framework  
 - Push Docker image to cloud  
 
-#### Raspberry Pi (hostname "pi")
+#### Raspberry Pi (hostname "rpi")
 
 - Raspbian GNU/Linux 9.1 (stretch) 
 - Install Docker  
@@ -34,8 +34,8 @@ A multi-stage docker image build is accomplished at the speedy Windows x64 machi
 #### Tests
  
 - Go back to x64 machine
-- Access pi-server-stub via browser  
-- http://pi:5000/swagger/ui/index.html 
+- Access rpi-server-stub via browser  
+- http://rpi:5000/swagger/ui/index.html 
 
 ## aspnetcore
 
