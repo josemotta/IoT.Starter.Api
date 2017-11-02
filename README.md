@@ -19,15 +19,15 @@ A multi-stage docker image build is accomplished at the speedy Windows x64 machi
 #### x64 machine:
 
 - Install Docker
-- Adapts server stub into docker repo: io.swagger  
+- Adapts server stub into docker repo  
 - Compiles at x64 machine for linux-arm framework  
-- **Docker push to cloud:** josemottalopes/io.swagger  
+- Push Docker image to cloud  
 
 #### Raspberry Pi (hostname "pi")
 
 - Raspbian GNU/Linux 9.1 (stretch) 
 - Install Docker  
-- **Docker run:** josemottalopes/io.swagger  
+- Run Docker image 
 
 #### Tests
  
