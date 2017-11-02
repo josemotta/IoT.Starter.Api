@@ -5,7 +5,7 @@ RUN /bin/bash -c "cd /app && dotnet restore ./IO.Swagger.csproj -r linux-arm && 
 
 FROM josemottalopes/gpio-base
 WORKDIR /app
-EXPOSE 5000
+EXPOSE 5010
 ENV DOTNET_CLI_TELEMETRY_OPTOUT 1
 ENV ASPNETCORE_URLS "http://*:5010"
 COPY --from=builder /app/obj/Docker/publish/ /app/
