@@ -2,10 +2,7 @@
 
 Faster build and availability of Visual Studio development environment are the key advantages of this workflow.
 
-**Links:**  
-https://app.swaggerhub.com/apis/josemottalopes/contacts-api/1.2.0  
-https://github.com/josemotta/Api  
-https://hub.docker.com/r/josemottalopes/io.swagger/   
+
 
 ## ASP.NET Core Web API for Raspberry Pi
 
@@ -42,6 +39,11 @@ A multi-stage docker image build is accomplished at the speedy Windows x64 machi
 
 Testing API at port:5000
 
+**Links:**  
+https://app.swaggerhub.com/apis/josemottalopes/contacts-api/1.2.0  
+https://github.com/josemotta/Api  
+https://hub.docker.com/r/josemottalopes/io.swagger/ 
+
 #### x64: Build 
 
 	cd /aspnetcore
@@ -57,6 +59,11 @@ Testing API at port:5000
 ## home-web
 
 Starter for Home project at port:5010
+
+**Links:**  
+https://app.swaggerhub.com/apis/josemottalopes/home-api/1.0.1 
+https://github.com/josemotta/Api  
+https://hub.docker.com/r/josemottalopes/home-web/
 
 #### x64: Build 
 
