@@ -68,8 +68,39 @@ namespace IO.Swagger.Controllers
         [SwaggerOperation("CompaniesCompanyidGet")]
         [SwaggerResponse(200, type: typeof(Company))]
         public virtual IActionResult CompaniesCompanyidGet([FromRoute]string companyid)
-        { 
+        {
             string exampleJson = null;
+
+            DirectoryInfo devicesDir = new DirectoryInfo("/sys/bus/w1/devices");
+
+            foreach (var deviceDir in devicesDir.EnumerateDirectories("28*"))
+            {
+                var w1slavetext =
+                    deviceDir.GetFiles("w1_slave").FirstOrDefault().OpenText().ReadToEnd();
+                string temptext =
+                    w1slavetext.Split(new string[] { "t=" }, StringSplitOptions.RemoveEmptyEntries)[1];
+
+                exampleJson = @"{
+                                    'id': 'string',
+                                    'name': 'string',
+                                    'tags': ['" +
+                                    string.Format("Device {0} reported temperature {1}C", deviceDir.Name, temptext) +
+                                    @"'
+                                    ],
+                                    'address': {
+                                        'street': 'string',
+                                        'street2': 'string',
+                                        'city': 'string',
+                                        'zipcode': 'string',
+                                        'taxId': 'string'
+                                    }
+                                }";
+
+                //double temp = double.Parse(temptext) / 1000;
+
+                //Console.WriteLine(string.Format("Device {0} reported temperature {1}C",
+                //    deviceDir.Name, temp));
+            }
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<Company>(exampleJson)
