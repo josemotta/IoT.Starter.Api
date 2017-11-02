@@ -76,3 +76,18 @@ https://hub.docker.com/r/josemottalopes/home-web/
 
 #### any browser: Client Test
     http://pi:5010/swagger/ui/index.html
+
+## Both projects running at RPI
+
+	pi@lumi:~ $ docker images
+	REPOSITORY                            TAG                 IMAGE ID            CREATED             SIZE
+	josemottalopes/home-web               latest              75e89c7c1cf5        18 minutes ago      235MB
+	josemottalopes/io.swagger             latest              fb9745c521f5        3 weeks ago         235MB
+	josemottalopes/gpio                   latest              f682dce817fc        5 weeks ago         231MB
+	josemottalopes/gpio-base-web          latest              774213c100a5        5 weeks ago         166MB
+	josemottalopes/dotnetapp-prod-arm32   v1                  eff107bb8521        2 months ago        165MB
+
+	pi@lumi:~ $ docker ps
+	CONTAINER ID        IMAGE                              COMMAND                  CREATED             STATUS              PORTS                    NAMES
+	e5fa0180732e        josemottalopes/home-web:latest     "/bin/sh -c /app/I..."   3 minutes ago       Up 3 minutes        0.0.0.0:5010->5010/tcp   elastic_pare
+	51cae8e56122        josemottalopes/io.swagger:latest   "/bin/sh -c /app/I..."   32 minutes ago      Up 32 minutes       0.0.0.0:5000->5000/tcp   confident_ramanujan
