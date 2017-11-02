@@ -19,7 +19,8 @@ A multi-stage docker image build is accomplished at the speedy Windows x64 machi
 #### x64 machine:
 
 - Install Docker
-- Adapts server stub into docker repo  
+- Upgrade to .NET Core 2 and Docker support
+- Create multi-stage image build for server stub    
 - Compiles at x64 machine for linux-arm framework  
 - Push Docker image to cloud  
 
