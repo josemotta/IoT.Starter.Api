@@ -1,4 +1,5 @@
 FROM microsoft/aspnetcore-build:1.0-2.0 as builder
+ENV DOTNET_CLI_TELEMETRY_OPTOUT 1
 WORKDIR /app
 ADD ./ /app/
 RUN /bin/bash -c "cd /app && dotnet restore ./IO.Swagger.csproj -r linux-arm && dotnet publish ./IO.Swagger.csproj -c Release -r linux-arm -o ./obj/Docker/publish"
