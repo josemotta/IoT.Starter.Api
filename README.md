@@ -121,7 +121,7 @@ Then both projects are started, downloading images from cloud (DockerHub) to RPI
 	Status: Downloaded newer image for josemottalopes/io.swagger:latest
 	19285505a953d130401a42aa67017f6f7289d9838adb1b0e994cb7d841acb53a
 
-You can notice the second project share five images with first project and they don't need to be downloaded again. Following is the docker images and running containers:
+You can notice the second project share five images with first project and they don't need to be downloaded again. The docker images and running containers are shown below:
 
 	root@lumi:/# docker images -a
 	REPOSITORY                  TAG                 IMAGE ID            CREATED             SIZE
