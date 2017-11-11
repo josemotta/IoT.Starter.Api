@@ -81,15 +81,57 @@ https://hub.docker.com/r/josemottalopes/home-web/
 
 ## Both projects running at RPI
 
-	pi@lumi:~ $ docker images
-	REPOSITORY                            TAG                 IMAGE ID            CREATED             SIZE
-	josemottalopes/home-web               latest              75e89c7c1cf5        18 minutes ago      235MB
-	josemottalopes/io.swagger             latest              fb9745c521f5        3 weeks ago         235MB
-	josemottalopes/gpio                   latest              f682dce817fc        5 weeks ago         231MB
-	josemottalopes/gpio-base-web          latest              774213c100a5        5 weeks ago         166MB
-	josemottalopes/dotnetapp-prod-arm32   v1                  eff107bb8521        2 months ago        165MB
+The commands start clearing all docker containers and images:
+	
+	# Stop the containers
+	root@lumi:# docker stop $(docker ps -a -q)
+	
+	# Delete all containers
+	root@lumi:# docker rm $(docker ps -a -q)
+	
+	# Delete all images
+	root@lumi:# docker rmi --force $(docker images -q)
 
-	pi@lumi:~ $ docker ps
+Then both projects are started, downloading images from cloud (DockerHub) to RPI:
+
+	#alias homeweb='docker run --privileged -p 5010:5010 -d josemottalopes/home-web:latest'
+	#alias ioswagger='docker run --privileged -p 5000:5000 -d josemottalopes/io.swagger:latest'
+	
+	root@lumi:# homeweb
+	Unable to find image 'josemottalopes/home-web:latest' locally
+	latest: Pulling from josemottalopes/home-web
+	e7ea15fa8fb2: Pull complete
+	14ae8f7a598f: Pull complete
+	15d4c9904a5d: Pull complete
+	4e1120917082: Pull complete
+	b8d414906f99: Pull complete
+	0dfe3a2727e0: Pull complete
+	Digest: sha256:48da4f5cff21fd7d1f44c0e129a9b0de3114e48124d491f1da1f1a1ecfa1cf33
+	Status: Downloaded newer image for josemottalopes/home-web:latest
+	2e8be31f9e5e641ddfb94e3db5d4770c039dedc410c0d66f86555e9286e34f0a
+
+	root@lumi:/# ioswagger
+	Unable to find image 'josemottalopes/io.swagger:latest' locally
+	latest: Pulling from josemottalopes/io.swagger
+	e7ea15fa8fb2: Already exists
+	14ae8f7a598f: Already exists
+	15d4c9904a5d: Already exists
+	4e1120917082: Already exists
+	b8d414906f99: Already exists
+	97db2d097015: Pull complete
+	Digest: sha256:5eac7701f0d884d3ef6b1eeafb773014a042389ddacc7342cc8a87eaab618cf4
+	Status: Downloaded newer image for josemottalopes/io.swagger:latest
+	19285505a953d130401a42aa67017f6f7289d9838adb1b0e994cb7d841acb53a
+
+You can notice the second project share five containers with first project. They don't need to be downloaded again. Following is the docker images and running containers:
+
+	root@lumi:/# docker images -a
+	REPOSITORY                  TAG                 IMAGE ID            CREATED             SIZE
+	josemottalopes/home-web     latest              75e89c7c1cf5        9 days ago          235MB
+	josemottalopes/io.swagger   latest              fb9745c521f5        4 weeks ago         235MB
+	root@lumi:/# docker ps -a
 	CONTAINER ID        IMAGE                              COMMAND                  CREATED             STATUS              PORTS                    NAMES
-	e5fa0180732e        josemottalopes/home-web:latest     "/bin/sh -c /app/I..."   3 minutes ago       Up 3 minutes        0.0.0.0:5010->5010/tcp   elastic_pare
-	51cae8e56122        josemottalopes/io.swagger:latest   "/bin/sh -c /app/I..."   32 minutes ago      Up 32 minutes       0.0.0.0:5000->5000/tcp   confident_ramanujan
+	19285505a953        josemottalopes/io.swagger:latest   "/bin/sh -c /app/I..."   9 minutes ago       Up 9 minutes        0.0.0.0:5000->5000/tcp   hardcore_sammet
+	2e8be31f9e5e        josemottalopes/home-web:latest     "/bin/sh -c /app/I..."   15 minutes ago      Up 15 minutes       0.0.0.0:5010->5010/tcp   inspiring_golick
+
+There are a couple ASP.NET Core  Web APIs listening to ports 5000 and 5010, each one related to a different swagger file. 
