@@ -79,7 +79,7 @@ https://hub.docker.com/r/josemottalopes/home-web/
 
 ## Project 3: home-pi-1
 
-Web Client Starter for Home project (port:80) using RazorPageShop from Marcelo Oliveira as template.
+Web UI Starter for Home project (port:80) using RazorPageShop from Marcelo Oliveira as a template.
 
 Razor  
 [From MVC to Razor Pages](https://www.codeproject.com/Articles/1208668/From-MVC-to-Razor-Pages)
@@ -87,12 +87,11 @@ Razor
 React  
 [React Shop - A Tiny E-Commerce](https://www.codeproject.com/Articles/1121533/React-Shop-A-Tiny-E-Commerce)
 
-DAL/DB (.net 2.0 support?)  
+DAL/DB (check .net 2.0 support?)  
 [Building Entity Framework Disconnected Generic Repository](https://www.codeproject.com/Articles/1217014/Building-Entity-Framework-Disconnected-Generic-Rep)
 
 **Links:**  
-https://app.swaggerhub.com/apis/josemottalopes/home-api/1.0.1  
-https://github.com/josemotta/Home.Pi  
+https://github.com/josemotta/Api   
 https://hub.docker.com/r/josemottalopes/home-pi-1/
 
 #### x64: Build 
