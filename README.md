@@ -35,9 +35,9 @@ A multi-stage docker image build is accomplished at the speedy Windows x64 machi
 - Access rpi-server-stub via browser  
 - http://rpi:5000/swagger/ui/index.html 
 
-## aspnetcore
+## Project 1: aspnetcore
 
-Testing API at port:5000
+Testing API at port:5000 with code generated from SwaggerHub.  
 
 **Links:**  
 https://app.swaggerhub.com/apis/josemottalopes/contacts-api/1.2.0  
@@ -56,7 +56,7 @@ https://hub.docker.com/r/josemottalopes/io.swagger/
 #### any browser: Client Test
     http://rpi:5000/swagger/ui/index.html
 
-## home-web
+## Project 2: home-web
 
 Starter for Home project at port:5010
 
@@ -77,7 +77,38 @@ https://hub.docker.com/r/josemottalopes/home-web/
 #### any browser: Client Test
     http://rpi:5010/swagger/ui/index.html
 
-## Both projects running at RPI
+## Project 3: home-pi-1
+
+Web Client Starter for Home project (port:80) using RazorPageShop from Marcelo Oliveira as template.
+
+Razor  
+[From MVC to Razor Pages](https://www.codeproject.com/Articles/1208668/From-MVC-to-Razor-Pages)
+
+React  
+[React Shop - A Tiny E-Commerce](https://www.codeproject.com/Articles/1121533/React-Shop-A-Tiny-E-Commerce)
+
+DAL/DB (.net 2.0 support?)  
+[Building Entity Framework Disconnected Generic Repository](https://www.codeproject.com/Articles/1217014/Building-Entity-Framework-Disconnected-Generic-Rep)
+
+**Links:**  
+https://app.swaggerhub.com/apis/josemottalopes/home-api/1.0.1  
+https://github.com/josemotta/Home.Pi  
+https://hub.docker.com/r/josemottalopes/home-pi-1/
+
+#### x64: Build 
+
+	cd razorpageshop
+	docker-compose -f docker-compose.pi.yml build   
+	docker push josemottalopes/home-pi-1:latest  
+
+#### arm: RaspberryPi (hostname "rpi")  
+`docker run --privileged -p 80:80 -d josemottalopes/home-pi-1`  
+
+#### any browser: Client Test
+    http://rpi
+
+
+## Projects running at RPI
 
 The commands start clearing all docker containers and images:
 	

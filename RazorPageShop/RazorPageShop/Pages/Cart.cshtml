@@ -1,0 +1,31 @@
+﻿@page
+@model CartModel
+
+@using React.AspNet;
+@using RazorPageShop.Core;
+
+@inject ICheckoutManager ICheckoutManager;
+@{
+    ViewBag.Title = "Cart";
+}
+
+<form method="post">
+</form>
+
+@Html.React("CartView", new
+{
+    model = Model.CartDTO
+})
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/react/react.min.js"></script>
+<script src="~/lib/react/react-dom.min.js"></script>
+<script src="~/lib/react/react-with-addons.min.js"></script>
+<script src="~/lib/react-bootstrap/react-bootstrap.min.js"></script>
+<script src="@Url.Content("~/js/Components.jsx")"></script>
+<script src="@Url.Content("~/js/Cart.jsx")"></script>
+<script src="@Url.Content("~/js/CheckoutSuccess.jsx")"></script>
+ 
+@Html.ReactInitJavaScript()
+
+
