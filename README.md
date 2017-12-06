@@ -120,7 +120,7 @@ The commands start clearing all docker containers and images:
 	# Delete all images
 	root@lumi:# docker rmi --force $(docker images -q)
 
-Then both projects are started, downloading images from cloud (DockerHub) to RPI:
+Then all projects are started, downloading images from cloud (DockerHub) to RPI:
 
 	#alias homeweb='docker run --privileged -p 5010:5010 -d josemottalopes/home-web:latest'
 	#alias ioswagger='docker run --privileged -p 5000:5000 -d josemottalopes/io.swagger:latest'
@@ -165,4 +165,7 @@ You can notice the second project share five images with first project and they 
 	josemottalopes/io.swagger   latest              fb9745c521f5        7 weeks ago         235MB
 	root@lumi:~#
 
-There are a couple ASP.NET Core  Web APIs listening to ports 5000 and 5010, each one related to a different swagger file. The Web UI is running on port 80, as shown at home-pi-1 container log.
+There are a couple ASP.NET Core  Web APIs listening to ports 5000 and 5010, each one related to a different swagger file. The Web UI is running on port 80, although the activation is not shown above.
+
+![All running](https://i.imgur.com/AkXC95i.png)
+
