@@ -1,0 +1,26 @@
+﻿@page
+@model CheckoutSuccessModel
+
+@using React.AspNet;
+@using System.Collections.Generic;
+
+@{
+    ViewBag.Title = "Order Details";
+}
+
+@Html.React("CheckoutSuccessView", new
+{
+    title = "React JS.Net + React-Bootstrap",
+    model = Model.CheckoutSummaryDTO
+})
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/react/react.min.js"></script>
+<script src="~/lib/react/react-dom.min.js"></script>
+<script src="~/lib/react/react-with-addons.min.js"></script>
+<script src="~/lib/react-bootstrap/react-bootstrap.min.js"></script>
+<script src="@Url.Content("~/js/Components.jsx")"></script>
+<script src="@Url.Content("~/js/Cart.jsx")"></script>
+<script src="@Url.Content("~/js/CheckoutSuccess.jsx")"></script>
+
+

@@ -1,0 +1,87 @@
+﻿@page
+@model IndexModel
+
+@using RazorPageShop.Core;
+
+@inject ICheckoutManager ICheckoutManager;
+
+@{
+    ViewBag.Title = "Product Catalog";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="row">
+            <div class="col-md-9">
+                <h3>
+                    Product Catalog
+                </h3>
+            </div>
+            <div class="col-md-3">
+                <!-- Controls -->
+                <div class="controls pull-right hidden-xs">
+                    <a class="left fa fa-chevron-left btn btn-success" href="#carousel-example"
+                       data-slide="prev"></a><a class="right fa fa-chevron-right btn btn-success" href="#carousel-example"
+                                                data-slide="next"></a>
+                </div>
+            </div>
+        </div>
+        <div id="carousel-example" class="carousel slide hidden-xs" data-ride="carousel">
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                @foreach (var pageIndex in Enumerable.Range(0, (Model.Products.Count() - 1) / 4))
+                {
+                    <div class="item@(pageIndex == 0 ? " active" : "")">
+                        <div class="row">
+                            <form asp-page-handler="Add">
+                                @foreach (var product in Model.Products.Skip(pageIndex * 4).Take(4))
+                                {
+                                    <div class="col-sm-3">
+                                        <div class="col-item">
+                                            <div class="photo">
+                                                <img src="~/@product.SmallImagePath" class="img-responsive" alt="a" width="350" height="260" />
+                                            </div>
+                                            <div class="info">
+                                                <div class="row">
+                                                    <div class="price col-md-6">
+                                                        <h5 class="truncate">
+                                                            @product.Description
+                                                        </h5>
+                                                        <h5 class="price-line">
+                                                            $<span class="price-text-color">@product.Price</span>
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                                <div class="separator clear-left">
+                                                    <p class="btn-add">
+                                                        <button type="submit" class="btn btn-link" name="SKU" value="@product.SKU">
+                                                            <i class="fa fa-shopping-cart" aria-hidden="false"></i>
+                                                            Add to Cart
+                                                        </button>
+                                                    </p>
+                                                    <p class="btn-details">
+                                                        <button type="button" class="btn btn-link" name="SKU" value="@product.SKU">
+                                                            <i class="fa fa-list"></i><a href="" class="hidden-sm"></a>
+                                                            Details
+                                                        </button>
+                                                    </p>
+                                                </div>
+                                                <div class="clearfix">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </form>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
