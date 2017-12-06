@@ -153,13 +153,16 @@ Then both projects are started, downloading images from cloud (DockerHub) to RPI
 
 You can notice the second project share five images with first project and they don't need to be downloaded again. The docker images and running containers are shown below:
 
-	root@lumi:/# docker images -a
-	REPOSITORY                  TAG                 IMAGE ID            CREATED             SIZE
-	josemottalopes/home-web     latest              75e89c7c1cf5        9 days ago          235MB
-	josemottalopes/io.swagger   latest              fb9745c521f5        4 weeks ago         235MB
-	root@lumi:/# docker ps -a
+	root@lumi:~# docker ps
 	CONTAINER ID        IMAGE                              COMMAND                  CREATED             STATUS              PORTS                    NAMES
-	19285505a953        josemottalopes/io.swagger:latest   "/bin/sh -c /app/I..."   9 minutes ago       Up 9 minutes        0.0.0.0:5000->5000/tcp   hardcore_sammet
-	2e8be31f9e5e        josemottalopes/home-web:latest     "/bin/sh -c /app/I..."   15 minutes ago      Up 15 minutes       0.0.0.0:5010->5010/tcp   inspiring_golick
+	a347c582e14e        josemottalopes/io.swagger:latest   "/bin/sh -c /app/I..."   2 minutes ago       Up 2 minutes        0.0.0.0:5000->5000/tcp   dreamy_bose
+	268429269f52        josemottalopes/home-web:latest     "/bin/sh -c /app/I..."   2 minutes ago       Up 2 minutes        0.0.0.0:5010->5010/tcp   epic_swirles
+	22337a4f50b8        josemottalopes/home-pi-1:latest    "dotnet RazorPageS..."   25 hours ago        Up 25 hours         0.0.0.0:80->80/tcp       goofy_wescoff
+	root@lumi:~# docker images -a
+	REPOSITORY                  TAG                 IMAGE ID            CREATED             SIZE
+	josemottalopes/home-pi-1    latest              7e335e37b9d3        28 hours ago        249MB
+	josemottalopes/home-web     latest              75e89c7c1cf5        4 weeks ago         235MB
+	josemottalopes/io.swagger   latest              fb9745c521f5        7 weeks ago         235MB
+	root@lumi:~#
 
-There are a couple ASP.NET Core  Web APIs listening to ports 5000 and 5010, each one related to a different swagger file. 
+There are a couple ASP.NET Core  Web APIs listening to ports 5000 and 5010, each one related to a different swagger file. The Web UI is running on port 80, as shown at home-pi-1 container log.
