@@ -172,3 +172,20 @@ There are a couple ASP.NET Core  Web APIs listening to ports 5000 and 5010, each
 
 ![All running](https://i.imgur.com/AkXC95i.png)
 
+Following is a full activation with all containers already loaded.
+
+	alias yhomeweb='docker run --privileged -p 5010:5010 -d josemottalopes/home-web:latest'
+	alias yioswagger='docker run --privileged -p 5000:5000 -d josemottalopes/io.swagger:latest'
+	alias yrazor='docker run --privileged -p 80:80 -d josemottalopes/home-pi-1:latest'
+
+	root@lumi:~# yioswagger
+	98815f8f3381212979098b27c80fdf6f226bf10dfd237c448f8b2fc3c63bd754
+	root@lumi:~# yhomeweb
+	694c4be94e3de0789ee4822bca51c0266f1933edb8201e1953faa32dd9794656
+	root@lumi:~# yrazor
+	cf531a536076373cde0bdf1fe292997e89c5f2c2f51bc718e317930a2499cc56
+	root@lumi:~# docker ps
+	CONTAINER ID        IMAGE                              COMMAND                  CREATED             STATUS              PORTS                    NAMES
+	cf531a536076        josemottalopes/home-pi-1:latest    "dotnet RazorPageS..."   17 seconds ago      Up 7 seconds        0.0.0.0:80->80/tcp       admiring_edison
+	694c4be94e3d        josemottalopes/home-web:latest     "/bin/sh -c /app/I..."   27 seconds ago      Up 16 seconds       0.0.0.0:5010->5010/tcp   youthful_colden
+	98815f8f3381        josemottalopes/io.swagger:latest   "/bin/sh -c /app/I..."   35 seconds ago      Up 27 seconds       0.0.0.0:5000->5000/tcp   suspicious_albattani
