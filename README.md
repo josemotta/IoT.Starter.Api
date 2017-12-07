@@ -172,7 +172,7 @@ There are a couple ASP.NET Core  Web APIs listening to ports 5000 and 5010, each
 
 ![All running](https://i.imgur.com/AkXC95i.png)
 
-Following is a full activation with all containers already loaded.
+Following is a full activation after a boot, considering that all containers are already loaded.
 
 	alias yhomeweb='docker run --privileged -p 5010:5010 -d josemottalopes/home-web:latest'
 	alias yioswagger='docker run --privileged -p 5000:5000 -d josemottalopes/io.swagger:latest'
