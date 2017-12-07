@@ -79,10 +79,13 @@ https://hub.docker.com/r/josemottalopes/home-web/
 
 ## Project 3: RazorPageShop
 
-Web UI Starter for Home project (port:80) using RazorPageShop from Marcelo Oliveira as a template.
+Web UI Starter for Home project (port:80) using RazorPageShop from Marcelo Oliveira as a template. Another option is a "regular" ASP.NET Core MVC Application.
 
 Razor  
 [From MVC to Razor Pages](https://www.codeproject.com/Articles/1208668/From-MVC-to-Razor-Pages)
+
+ASP.NET Core Application  
+[Building an ASP.NET Core Application with Web API and Code First Development](https://www.codeproject.com/Articles/1218427/Getting-Started-with-Entity-Framework-Core-Buildin)
 
 React  
 [React Shop - A Tiny E-Commerce](https://www.codeproject.com/Articles/1121533/React-Shop-A-Tiny-E-Commerce)
