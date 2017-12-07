@@ -79,7 +79,7 @@ https://hub.docker.com/r/josemottalopes/home-web/
 
 ## Project 3: RazorPageShop
 
-Web UI Starter for Home project (port:80) using RazorPageShop from Marcelo Oliveira as a template. Another option is a "regular" ASP.NET Core MVC Application.
+Web UI Starter for Home project (port:80) using RazorPageShop from Marcelo Oliveira as a template. Another option would be a "regular" ASP.NET Core MVC Application.
 
 Razor  
 [From MVC to Razor Pages](https://www.codeproject.com/Articles/1208668/From-MVC-to-Razor-Pages)
