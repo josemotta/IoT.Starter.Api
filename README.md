@@ -77,7 +77,7 @@ https://hub.docker.com/r/josemottalopes/home-web/
 #### any browser: Client Test
     http://rpi:5010/swagger/ui/index.html
 
-## Project 3: home-pi-1
+## Project 3: RazorPageShop
 
 Web UI Starter for Home project (port:80) using RazorPageShop from Marcelo Oliveira as a template.
 
