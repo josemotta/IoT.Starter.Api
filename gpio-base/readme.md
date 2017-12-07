@@ -395,23 +395,26 @@ Once identified, copy the needed conf to /etc/lirc/lircd.conf.d/ to allow the da
     sleep 10
     /usr/bin/irsend SEND_ONCE lg_tv KEY_MUTE
 
-## Docker
+## Docker tips
 
-#### P&D Windows 10 x64
+#### Bash or ssh into a running container in background mode
+	docker exec -it <containerIdOrName> bash
+	docker exec -it 665b4a1e17b6 /bin/bash #by ID
+	docker exec -i -t loving_heisenberg /bin/bash #by Name
+[See more at this link](https://askubuntu.com/questions/505506/how-to-get-bash-or-ssh-into-a-running-container-in-background-mode)
 
+#### Remove dangling Docker images
+	docker system prune
     docker container prune
     docker image prune
-    docker container ls -a
-    docker-compose -f docker-compose.ci.build.yml build
-    docker push josemottalopes/io.swagger:latest
 
-#### Run Raspberry Pi arm
+	Linux cron utility:
 
-    docker run --privileged -d -p 5000:5000 josemottalopes/io.swagger:latest
+	crontab -e
+	#add this line to the bottom and save it:
+	0 3 * * * /usr/bin/docker system prune -f
 
-#### Test
-
-    http://lumi:5000/swagger/ui/index.html
+[See more at this link](https://nickjanetakis.com/blog/docker-tip-32-automatically-clean-up-after-docker-daily)
 
 #### Util
     ip a
@@ -422,13 +425,14 @@ Once identified, copy the needed conf to /etc/lirc/lircd.conf.d/ to allow the da
 
 	#!/bin/bash
 	
-	# Stop the containers
+	# Stop all containers
 	docker stop $(docker ps -a -q)
 	
 	# Delete all containers
 	# https://techoverflow.net/blog/2013/10/22/docker-remove-all-images-and-containers/
 	# https://github.com/stuckless/sagetv-dockers/blob/master/nukeAllDockers.sh
 	docker rm $(docker ps -a -q)
+
 	# Delete all images except base: gpio | home-web
 	# docker rmi --force $(docker images -q)
 	docker images -q | grep -v "`docker images | grep 'gpio\|home-web' | awk -F \" \" '{print $3}'`"
