@@ -160,6 +160,14 @@ Do not need changes at current Lircd version 0.9.4c, although previous version (
 
 ## Reboot and check
 
+#### lircd status
+
+	root@a4cfc1934fd1:/app# /etc/init.d/lircd status
+	[ ok ] lircd is running.
+	
+	root@d06ba23ebb3d:/etc# /etc/init.d/lircd --help
+	Usage: /etc/init.d/lircd {start|stop|reload|restart|force-reload|status}
+
 #### lircd.socket
 
 	root@lumi:~# systemctl status lircd.socket
