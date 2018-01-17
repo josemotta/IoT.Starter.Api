@@ -88,11 +88,11 @@ Bengt Martensson has a further development of a [improved Lirc driver](https://g
 
 #### Lirc 0.9.4 disruptive update
 
-As seen at this Marcel [post](https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=192891#p1212574) the Lirc configuration changed so much that updating from 0.9.0 requires manual intervention. This could be done using the update scripts or as a completely manual process. Many users will always need some manual steps. Also there is a tricky script to "convert" the configuration that can be found at '/usr/share/lirc/lirc-old2new.sh'
+As seen at this Marcel [post](https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=192891#p1212574) the Lirc configuration changed so much that updating from 0.9.0 requires manual intervention. This can be done using update script or as a completely manual process. Most users will need some manual steps but a tricky script "convert" the old configuration, found at '/usr/share/lirc/lirc-old2new.sh'.
 
 Previous version (no device-tree) required the following:
 
-- /etc/modules:  
+- /etc/modules not used anymore:  
     lirc_dev  
     lirc_rpi   
     
@@ -136,7 +136,13 @@ For more details about current Lircd version 0.9.4c, please see info extracted f
 
 #### Lircd setup
 
-    sudo apt-get install lirc
+In order to install Lirc at RPI, run the command:
+
+	  apt-get update \
+	  && apt-get upgrade -y \
+	  && apt-get install -y --no-install-recommends \
+	       lirc \
+	  && rm -rf /var/lib/apt/lists/*
 
 #### Config.txt
 
