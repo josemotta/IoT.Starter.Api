@@ -136,7 +136,7 @@ For more details about current Lircd version 0.9.4c, please see info extracted f
 
 #### Lircd setup
 
-In order to install Lirc at RPI, run the command:
+In order to update and upgrade Raspbian and install Lirc at RPI, run the command:
 
 	  apt-get update \
 	  && apt-get upgrade -y \
