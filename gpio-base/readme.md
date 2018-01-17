@@ -36,13 +36,13 @@ GPIO 4 of RPi header pin 7
 
 ## Infrared + Keyes IR input 838B
 
-From 0.9.4+ LIRC is distributed with a default configuration based on the `devinput` driver. This should work out of the box with the following limitations:
+Starting from LIRC Version 0.9.4+, the Debian distribution comes with a default configuration based on the `devinput` driver. This scheme should work out of the box with the following limitations:
 
-- There must be exactly one capture device supported by the kernel
+- There must be exactly one capture device supported by the kernel.
 - The remote(s) used must be supported by the kernel.
 - There is no need to do IR blasting (i. e., to send IR data).
 
-Linux Raspbian 4.9.54-v7+ supports several IR drive options. First option is the best  if you just need IR input for remote control because `devinput` drive is already set. There is a second option to shutdown the RPI through a GPIO pin. If IR output is needed then then you should follow option 3, in order to fully install and configure the Linux Infrared Remote Control for Raspberry Pi. 
+Linux Raspbian 4.9.54-v7+ supports several IR drive options. First option is the best  if you just need IR input for remote control because `devinput` drive is already set. There is a second option to shutdown the RPI through a GPIO pin. But if IR output is needed then you should follow option 3, in order to fully install and configure the *Linux Infrared Remote Control for Raspberry Pi*. 
 
 ### option 1: gpio-ir
 
@@ -90,13 +90,13 @@ Bengt Martensson has a further development of a [improved Lirc driver](https://g
 
 As seen at this Marcel [post](https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=192891#p1212574) the Lirc configuration changed so much that updating from 0.9.0 requires manual intervention. This can be done using update script or as a completely manual process. Most users will need some manual steps but a tricky script "convert" the old configuration, found at '/usr/share/lirc/lirc-old2new.sh'.
 
-Previous version (no device-tree) required the following:
+Previous version (no device-tree) required files that are not used anymore:
 
-- /etc/modules not used anymore:  
+- /etc/modules  
     lirc_dev  
     lirc_rpi   
     
-- /etc/lirc/hardware.conf is deprecated
+- /etc/lirc/hardware.conf  
     LIRCD_ARGS="--uinput"  
     LOAD_MODULES=true  
     DRIVER="default"  
