@@ -140,8 +140,7 @@ In order to install Lirc at RPI, run the command:
 
 	  apt-get update \
 	  && apt-get upgrade -y \
-	  && apt-get install -y --no-install-recommends \
-	       lirc \
+	  && apt-get install -y lirc \
 	  && rm -rf /var/lib/apt/lists/*
 
 #### Config.txt
