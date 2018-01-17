@@ -90,17 +90,20 @@ Bengt Martensson has a further development of a [improved Lirc driver](https://g
 
 As seen at this Marcel [post](https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=192891#p1212574) the Lirc configuration changed so much that updating from 0.9.0 requires manual intervention. This could be done using the update scripts or as a completely manual process. Many users will always need some manual steps. Also there is a tricky script to "convert" the configuration that can be found at '/usr/share/lirc/lirc-old2new.sh'
 
-- /etc/modules: Do not need changes, although previous version (no device-tree) required following lines: 
-    lirc_dev
-    lirc_rpi 
+Previous version (no device-tree) required the following:
+
+- /etc/modules:  
+    lirc_dev  
+    lirc_rpi   
+    
 - /etc/lirc/hardware.conf is deprecated
-    LIRCD_ARGS="--uinput"
-    LOAD_MODULES=true
-    DRIVER="default"
-    DEVICE="/dev/lirc0"
-    MODULES="lirc_rpi"
-    LIRCD_CONF=""
-    LIRCMD_CONF=""
+    LIRCD_ARGS="--uinput"  
+    LOAD_MODULES=true  
+    DRIVER="default"  
+    DEVICE="/dev/lirc0"  
+    MODULES="lirc_rpi"  
+    LIRCD_CONF=""  
+    LIRCMD_CONF=""  
 
 For more details about current Lircd version 0.9.4c, please see info extracted from [The Overlay and Parameter Reference](https://github.com/raspberrypi/firmware/blob/master/boot/overlays/README "Lircd Parameters"):
 
@@ -135,14 +138,14 @@ For more details about current Lircd version 0.9.4c, please see info extracted f
 
     sudo apt-get install lirc
 
-#### Add to /boot/config.txt
+#### Config.txt
+
+The Lirc version 0.9.4c parameters are configured ONLY in the file `/etc/config.txt`.
+
+Add to /boot/config.txt
 
     # Uncomment this to enable the lirc-rpi module
     dtoverlay=lirc-rpi,gpio_out_pin=17,gpio_in_pin=18,gpio_in_pull=up
-
-##### Lircd version 0.9.4c
-
-The Lirc parameters are configured ONLY in the file `/etc/config.txt`.
 
 #### Change to driver default
 
