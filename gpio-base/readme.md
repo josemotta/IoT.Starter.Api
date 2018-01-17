@@ -86,22 +86,25 @@ Bengt Martensson has a further development of a [improved Lirc driver](https://g
 - Add custom devices to /etc/lirc/lircd.conf.d/
 - IR output requires changes to configuration: `driver = default` 
 
-#### Lircd setup
+#### Lirc 0.9.4 disruptive update
 
-    sudo apt-get install lirc
+As seen at this Marcel [post](https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=192891#p1212574) the Lirc configuration changed so much that updating from 0.9.0 requires manual intervention. This could be done using the update scripts or as a completely manual process. Many users will always need some manual steps. Also there is a tricky script to "convert" the configuration that can be found at '/usr/share/lirc/lirc-old2new.sh'
 
-#### Add to /boot/config.txt
+- /etc/modules: Do not need changes, although previous version (no device-tree) required following lines: 
+    lirc_dev
+    lirc_rpi 
+- /etc/lirc/hardware.conf is deprecated
+    LIRCD_ARGS="--uinput"
+    LOAD_MODULES=true
+    DRIVER="default"
+    DEVICE="/dev/lirc0"
+    MODULES="lirc_rpi"
+    LIRCD_CONF=""
+    LIRCMD_CONF=""
 
-    # Uncomment this to enable the lirc-rpi module
-    dtoverlay=lirc-rpi,gpio_out_pin=17,gpio_in_pin=18,gpio_in_pull=up
-
-##### Lircd version 0.9.4c
-
-The parameters are configured ONLY in `/etc/config.txt`.
+For more details about current Lircd version 0.9.4c, please see info extracted from [The Overlay and Parameter Reference](https://github.com/raspberrypi/firmware/blob/master/boot/overlays/README "Lircd Parameters"):
 
 [DEVICE TREES, OVERLAYS, AND PARAMETERS](https://www.raspberrypi.org/documentation/configuration/device-tree.md#part3) states that "with a Device Tree, the kernel will automatically search for and load modules that support the indicated enabled devices. As a result, by creating an appropriate DT overlay for a device you save users of the device from having to edit  /etc/modules; all of the configuration goes in config.txt, and in the case of a HAT, even that step is unnecessary. Note, however, that layered modules such as  i2c-dev still need to be loaded explicitly."
-
-Please see details below, extracted from [The Overlay and Parameter Reference](https://github.com/raspberrypi/firmware/blob/master/boot/overlays/README "Lircd Parameters"):
 
     Name:   lirc-rpi
 	Info:   Configures lirc-rpi (Linux Infrared Remote Control for Raspberry Pi)
@@ -127,9 +130,23 @@ Please see details below, extracted from [The Overlay and Parameter Reference](h
 
         	debug               "on" = enable additional debug messages
                                 (default "off")
-  
 
-#### Change to driver default in /etc/lirc/lirc_options.conf
+#### Lircd setup
+
+    sudo apt-get install lirc
+
+#### Add to /boot/config.txt
+
+    # Uncomment this to enable the lirc-rpi module
+    dtoverlay=lirc-rpi,gpio_out_pin=17,gpio_in_pin=18,gpio_in_pull=up
+
+##### Lircd version 0.9.4c
+
+The Lirc parameters are configured ONLY in the file `/etc/config.txt`.
+
+#### Change to driver default
+
+Edit file /etc/lirc/lirc_options.conf and change:
 
     from:
     driver  = devinput
@@ -138,26 +155,7 @@ Please see details below, extracted from [The Overlay and Parameter Reference](h
     to:
     driver  = default
     device  = /dev/lirc0
-
-#### /etc/modules
-
-Do not need changes at current Lircd version 0.9.4c, although previous version (no device-tree) required following lines: 
-
-    lirc_dev
-    lirc_rpi 
-
-	#lirc_rpi gpio_in_pin=18 gpio_out_pin=17 gpio_in_pull=up
-
-#### /etc/lirc/hardware.conf is deprecated at Lircd version 0.9.4c
-
-    LIRCD_ARGS="--uinput"
-    LOAD_MODULES=true
-    DRIVER="default"
-    DEVICE="/dev/lirc0"
-    MODULES="lirc_rpi"
-    LIRCD_CONF=""
-    LIRCMD_CONF=""
-
+    
 ## Reboot and check
 
 #### lircd status
