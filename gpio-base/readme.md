@@ -44,7 +44,7 @@ Starting from LIRC Version 0.9.4+, the Debian distribution comes with a default 
 
 Linux Raspbian 4.9.54-v7+ supports several IR drive options. First option is the best  if you just need IR input for remote control because `devinput` drive is already set. There is a second option to shutdown the RPI through a GPIO pin. But if IR output is needed then you should follow option 3, in order to fully install and configure the *Linux Infrared Remote Control for Raspberry Pi*. 
 
-### option 1: gpio-ir
+### Option 1: gpio-ir
 
 - gpio-ir uses the upstream Linux gpio_rc_recv driver and supports in-kernel decoding (aka ir-keytable configuration)
 - gpio-r uses kernel embedded IR software and keys directly to /dev/input/event* device
@@ -58,7 +58,7 @@ Add to /boot/config.txt
 
     dtoverlay=gpio-ir,gpio_pin=18,gpio_pull=down,rc-map-name=rc-rc6-mce
 
-### option 2: gpio-shutdown
+### Option 2: gpio-shutdown
 
 - Initiates a shutdown when GPIO changes
 
@@ -66,14 +66,21 @@ Add to /boot/config.txt
 
     dtoverlay=gpio-shutdown,gpio_pin=3,active_low=1,gpio_pull=up
 
-### option 3: lirc-rpi
+### Option 3: lirc-rpi
 
 This setup installs Lirc with both IR input and output, the prototype below also shows the temperature sensor.
 
 ![prototype-2](https://i.imgur.com/Ops6Wit.png)
 
-- IR input: Keyes IR input 838B, connected at GPIO18 (BCM 12)
-- IR output: IR led driven by a 2N3904 transistor, connected at GPIO17 (BCM 11)
+#### IR input
+
+- Keyes KY-022 with IR sensor receiver 838B, connected at GPIO18 (BCM 12).
+
+![](https://i.imgur.com/LJAYZMD.png)
+
+#### IR output
+
+Infrared led driven by a 2N3904 transistor, connected at GPIO17 (BCM 11).
 
 ![IR output](https://i.imgur.com/cbiJUpb.png)
 
