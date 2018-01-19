@@ -127,7 +127,7 @@ If you need more info, look for Device Tree at RPI website. Below, links and def
 	    	debug               "on" = enable additional debug messages
 	                            (default "off")
 
-#### Lirc setup
+### Lirc setup
 
 In order to update and upgrade Raspbian and install Lirc at RPI, run the command:
 
@@ -136,7 +136,7 @@ In order to update and upgrade Raspbian and install Lirc at RPI, run the command
 	  && apt-get install -y lirc \
 	  && rm -rf /var/lib/apt/lists/*
 
-#### Config.txt
+### Config.txt
 
 The Lirc version 0.9.4c parameters are configured ONLY in the file `/etc/config.txt`.
 
@@ -145,7 +145,7 @@ Add to /boot/config.txt
     # Uncomment this to enable the lirc-rpi module
     dtoverlay=lirc-rpi,gpio_out_pin=17,gpio_in_pin=18,gpio_in_pull=up
 
-#### Change to driver default
+### Change to driver default
 
 Edit file /etc/lirc/lirc_options.conf and change:
 
