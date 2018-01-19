@@ -85,7 +85,7 @@ Infrared led driven by a 2N3904 transistor, connected at GPIO17 (BCM 11).
 ![IR output](https://i.imgur.com/cbiJUpb.png)
 
 
-#### LIRC: Linux Infrared Remote Control for Raspberry Pi
+## LIRC: Linux Infrared Remote Control for Raspberry Pi
 
 
 
