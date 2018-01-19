@@ -97,7 +97,7 @@ The good news is that if you are installing Lirc for the first time, the current
 
 Files required at previous version are not used anymore: `/etc/modules` and `/etc/lirc/hardware.conf`.  
 
-If you need more info, look for Device Tree at RPI website. Below, links that may help and  the `lirc-rpi` section extracted from official documents, showing parameters details.
+If you need more info, look for Device Tree at RPI website. Below, links and definitions that may help and  the `lirc-rpi` section extracted from official documents, showing parameters details.
 
 - [Overlay and Parameter Reference](https://github.com/raspberrypi/firmware/blob/master/boot/overlays/README "Lircd Parameters") and 
 - [DEVICE TREES, OVERLAYS, AND PARAMETERS](https://www.raspberrypi.org/documentation/configuration/device-tree.md#part3).
