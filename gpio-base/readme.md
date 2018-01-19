@@ -76,7 +76,7 @@ This setup installs Lirc with both IR input and output, the prototype below also
 
 - Keyes KY-022 with IR sensor receiver 838B, connected at GPIO18 (BCM 12).
 
-![](https://i.imgur.com/LJAYZMD.png)
+![](https://i.imgur.com/MKWqk60.png)
 
 #### IR output
 
@@ -84,64 +84,52 @@ Infrared led driven by a 2N3904 transistor, connected at GPIO17 (BCM 11).
 
 ![IR output](https://i.imgur.com/cbiJUpb.png)
 
+
 #### LIRC: Linux Infrared Remote Control for Raspberry Pi
 
-Bengt Martensson has a further development of a [improved Lirc driver](https://github.com/bengtmartensson/lirc_rpi "lirc_rpi") to replace the [original from Aron Szabo](http://aron.ws/projects/lirc_rpi/ "original lirc for rpi"), which in turn was derived from the Lirc serial driver. I figured out that Raspberry Raspbian Stretch Lircd version 0.9.4c applied some of these changes. 
 
-- Old configuration file `/etc/lirc/hardware.conf` should be converted
-- New configuration format at `/etc/lirc/lirc_options.conf`
-- Add custom devices to /etc/lirc/lircd.conf.d/
-- IR output requires changes to configuration: `driver = default` 
 
 #### Lirc 0.9.4 disruptive update
 
-As seen at this Marcel [post](https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=192891#p1212574) the Lirc configuration changed so much that updating from 0.9.0 requires manual intervention. This can be done using update script or as a completely manual process. Most users will need some manual steps but a tricky script "convert" the old configuration, found at '/usr/share/lirc/lirc-old2new.sh'.
+The Linux Infrared Remote Control for Raspberry Pi is derived from the original Lirc serial driver by [Aron Szabo](http://aron.ws/projects/lirc_rpi/ "original lirc for rpi"). Also a further development of Bengt Martensson [improved the Lirc driver](https://github.com/bengtmartensson/lirc_rpi "lirc_rpi"). The Lirc configuration [changed so much](https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=192891#p1212574) that updating from 0.9.0 requires special intervention. This can be done using an update script or a manual process. Most users just need some manual steps but a tricky script is also available to "convert" the old configuration, it can be found at '/usr/share/lirc/lirc-old2new.sh'.
 
-Previous version (no device-tree) required files that are not used anymore:
+The good news is that if you are installing for the first time, current Raspberry Pi / Raspbian Stretch comes with Lircd version 0.9.4c that applied several improvements to make your life much better.
 
-- /etc/modules  
-    lirc_dev  
-    lirc_rpi   
-    
-- /etc/lirc/hardware.conf  
-    LIRCD_ARGS="--uinput"  
-    LOAD_MODULES=true  
-    DRIVER="default"  
-    DEVICE="/dev/lirc0"  
-    MODULES="lirc_rpi"  
-    LIRCD_CONF=""  
-    LIRCMD_CONF=""  
+Files required at previous version are not used anymore: `/etc/modules` and `/etc/lirc/hardware.conf`.  
 
-For more details about current Lircd version 0.9.4c, please see info extracted from [The Overlay and Parameter Reference](https://github.com/raspberrypi/firmware/blob/master/boot/overlays/README "Lircd Parameters"):
+If you need more details, look for Device Tree at RPI website, links below may help.
 
-[DEVICE TREES, OVERLAYS, AND PARAMETERS](https://www.raspberrypi.org/documentation/configuration/device-tree.md#part3) states that "with a Device Tree, the kernel will automatically search for and load modules that support the indicated enabled devices. As a result, by creating an appropriate DT overlay for a device you save users of the device from having to edit  /etc/modules; all of the configuration goes in config.txt, and in the case of a HAT, even that step is unnecessary. Note, however, that layered modules such as  i2c-dev still need to be loaded explicitly."
+- [Overlay and Parameter Reference](https://github.com/raspberrypi/firmware/blob/master/boot/overlays/README "Lircd Parameters") and 
+- [DEVICE TREES, OVERLAYS, AND PARAMETERS](https://www.raspberrypi.org/documentation/configuration/device-tree.md#part3).
 
-    Name:   lirc-rpi
+> "With a Device Tree, the kernel will automatically search for and load modules that support the indicated enabled devices. As a result, by creating an appropriate DT overlay for a device you save users of the device from having to edit  /etc/modules; All of the configuration goes in config.txt, and in the case of a HAT, even that step is unnecessary. Note, however, that layered modules such as  i2c-dev still need to be loaded explicitly."
+
+	Name:   lirc-rpi  
 	Info:   Configures lirc-rpi (Linux Infrared Remote Control for Raspberry Pi)
-        	Consult the module documentation for more details.
-	Load:   dtoverlay=lirc-rpi,<param>=<val>
-	Params: gpio_out_pin        GPIO for output (default "17")
+	    	Consult the module documentation for more details.
+	Load:   dtoverlay=lirc-rpi,<param>=<val>  
+	Params: gpio_out_pin        GPIO for output (default "17")  
+	
+	    	gpio_in_pin         GPIO for input (default "18")
+	
+	    	gpio_in_pull        Pull up/down/off on the input pin
+	                            (default "down")
+	
+	    	sense               Override the IR receive auto-detection logic:
+	                             "0" = force active-high
+	                             "1" = force active-low
+	                             "-1" = use auto-detection
+	                            (default "-1")
+	
+	    	softcarrier         Turn the software carrier "on" or "off"
+	                            (default "on")
+	
+	    	invert              "on" = invert the output pin (default "off")
+	
+	    	debug               "on" = enable additional debug messages
+	                            (default "off")
 
-        	gpio_in_pin         GPIO for input (default "18")
-
-        	gpio_in_pull        Pull up/down/off on the input pin
-                                (default "down")
-
-        	sense               Override the IR receive auto-detection logic:
-                                 "0" = force active-high
-                                 "1" = force active-low
-                                 "-1" = use auto-detection
-                                (default "-1")
-
-        	softcarrier         Turn the software carrier "on" or "off"
-                                (default "on")
-
-        	invert              "on" = invert the output pin (default "off")
-
-        	debug               "on" = enable additional debug messages
-                                (default "off")
-
-#### Lircd setup
+#### Lirc setup
 
 In order to update and upgrade Raspbian and install Lirc at RPI, run the command:
 
