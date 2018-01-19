@@ -138,7 +138,7 @@ In order to update and upgrade Raspbian and install Lirc at RPI, run the command
 
 ### Config.txt
 
-The Lirc version 0.9.4c parameters are configured ONLY in the file `/etc/config.txt`.
+The Lirc version 0.9.4c is configured ONLY by the file `/etc/config.txt`.
 
 Add to /boot/config.txt
 
