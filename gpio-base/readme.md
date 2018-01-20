@@ -307,7 +307,7 @@ Edit file /etc/lirc/lirc_options.conf and change:
 
     mode2 --driver default --device /dev/lirc0
 
-acionar controle remoto perto IR receiver e constatar na tela pulse/space:
+Press remote control keys near the IR receiver e check pulse/space info at screen:
 
     space 28794
     pulse 80
