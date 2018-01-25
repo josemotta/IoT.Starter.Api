@@ -438,6 +438,10 @@ Once identified, copy the needed conf to /etc/lirc/lircd.conf.d/ to allow the da
 
 ## Docker tips
 
+#### Adicionar-se ao grupo docker
+
+	$ sudo usermod -aG docker $USER
+
 #### Bash or ssh into a running container in background mode
 	docker exec -it <containerIdOrName> bash
 	docker exec -it 665b4a1e17b6 /bin/bash #by ID
