@@ -495,3 +495,12 @@ Once identified, copy the needed conf to /etc/lirc/lircd.conf.d/ to allow the da
     netstat -r	routing
     netstat -tp	service name
 
+## Git tips
+
+#### Install and setup
+
+Antes criar SSH key no Github, com o conteúdo de `~/.ssh/id_rsa.pub`. Depois instalar Git com comandos abaixo:
+
+	sudo apt-get install git
+	ssh-keyscan github.com >> ~/.ssh/known_hosts
+
