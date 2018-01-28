@@ -503,8 +503,14 @@ Once identified, copy the needed conf to /etc/lirc/lircd.conf.d/ to allow the da
 
 #### Install and setup
 
-Antes criar SSH key no Github, com o conteúdo de `~/.ssh/id_rsa.pub`. Depois instalar Git com comandos abaixo:
+Go to your GitHub account settings and create a SSH key with RPI `~/.ssh/id_rsa.pub` file contents. Then install Git and set github.com as a known host to your RPI:
 
 	sudo apt-get install git
 	ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+Alternatively to get latest Compose release from GitHub:
+
+	curl -L https://github.com/docker/compose/releases/download/1.11.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+	chmod +x /usr/local/bin/docker-compose
+	docker-compose --version
 
