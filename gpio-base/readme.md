@@ -492,6 +492,18 @@ Once identified, copy the needed conf to /etc/lirc/lircd.conf.d/ to allow the da
 
     docker images -f dangling=true
     docker rmi $(docker images -f dangling=true -q)
+    
+#### Getting Docker-compose for RPI
+
+	$ mkdir /git
+	$ cd /git
+	$ git clone https://github.com/docker/compose.git
+	$ cd compose
+	$ git checkout release
+	$ docker build -t docker-compose:armhf -f Dockerfile.armhf .
+	$ docker run --rm --entrypoint="script/build/linux-entrypoint" -v $(pwd)/dist:/code/dist -v $(pwd)/.git:/code/.git "docker-compose:armhf"
+	
+[See more at this link](https://www.berthon.eu/2017/getting-docker-compose-on-raspberry-pi-arm-the-easy-way/)
 
 #### Net status
 
