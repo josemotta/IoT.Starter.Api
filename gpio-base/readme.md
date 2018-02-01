@@ -438,6 +438,12 @@ Once identified, copy the needed conf to /etc/lirc/lircd.conf.d/ to allow the da
 
 ## Docker tips
 
+#### Install Docker
+
+	curl -sSL https://get.docker.com | sh
+	
+[See more at this link[(https://www.raspberrypi.org/blog/docker-comes-to-raspberry-pi/)
+
 #### Adicionar-se ao grupo docker
 
 	$ sudo usermod -aG docker $USER
