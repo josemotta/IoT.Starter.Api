@@ -502,6 +502,17 @@ Once identified, copy the needed conf to /etc/lirc/lircd.conf.d/ to allow the da
 	$ git checkout release
 	$ docker build -t docker-compose:armhf -f Dockerfile.armhf .
 	$ docker run --rm --entrypoint="script/build/linux-entrypoint" -v $(pwd)/dist:/code/dist -v $(pwd)/.git:/code/.git "docker-compose:armhf"
+	$ ls -l dist/
+	total 6816
+	-rwxr-xr-x 1 pi pi 6976500 Feb  8 11:41 docker-compose-Linux-armv7l
+	$ sudo cp dist/docker-compose-Linux-armv7l /usr/local/bin/docker-compose
+	$ sudo chown root:root /usr/local/bin/docker-compose
+	$ sudo chmod 0755 /usr/local/bin/docker-compose
+	$ docker-compose version
+	docker-compose version 1.11.0-rc1, build daed6db
+	docker-py version: 2.0.2
+	CPython version: 2.7.13
+	OpenSSL version: OpenSSL 1.0.1t  3 May 2016
 	
 [See more at this link](https://www.berthon.eu/2017/getting-docker-compose-on-raspberry-pi-arm-the-easy-way/)
 
