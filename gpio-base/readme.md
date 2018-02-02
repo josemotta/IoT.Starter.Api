@@ -537,3 +537,4 @@ Go to your GitHub account settings and create a SSH key with RPI `~/.ssh/id_rsa.
 	sudo apt-get install git
 	ssh-keyscan github.com >> ~/.ssh/known_hosts
 
+[See more at this link](https://www.raspberrypi.org/documentation/remote-access/ssh/passwordless.md)
