@@ -509,8 +509,8 @@ Once identified, copy the needed conf to /etc/lirc/lircd.conf.d/ to allow the da
 	$ sudo chown root:root /usr/local/bin/docker-compose
 	$ sudo chmod 0755 /usr/local/bin/docker-compose
 	$ docker-compose version
-	docker-compose version 1.11.0-rc1, build daed6db
-	docker-py version: 2.0.2
+	docker-compose version 1.19.0-rc2, build dfcb02c
+	docker-py version: 2.7.0
 	CPython version: 2.7.13
 	OpenSSL version: OpenSSL 1.0.1t  3 May 2016
 	
