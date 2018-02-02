@@ -538,3 +538,13 @@ Go to your GitHub account settings and create a SSH key with RPI `~/.ssh/id_rsa.
 	ssh-keyscan github.com >> ~/.ssh/known_hosts
 
 [See more at this link](https://www.raspberrypi.org/documentation/remote-access/ssh/passwordless.md)
+
+## Firmware
+
+This gets you the latest bleeding edge kernel/firmware. 
+
+	apt-get install rpi-update
+	rpi-update
+
+[See more at this link](https://github.com/Hexxeh/rpi-update)
+
