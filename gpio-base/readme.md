@@ -537,9 +537,3 @@ Go to your GitHub account settings and create a SSH key with RPI `~/.ssh/id_rsa.
 	sudo apt-get install git
 	ssh-keyscan github.com >> ~/.ssh/known_hosts
 
-Alternatively to get latest Compose release from GitHub:
-
-	curl -L https://github.com/docker/compose/releases/download/1.11.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
-	chmod +x /usr/local/bin/docker-compose
-	docker-compose --version
-
