@@ -513,7 +513,8 @@ Once identified, copy the needed conf to /etc/lirc/lircd.conf.d/ to allow the da
 	docker-py version: 2.7.0
 	CPython version: 2.7.13
 	OpenSSL version: OpenSSL 1.0.1t  3 May 2016
-	
+
+[Get binary](https://github.com/josemotta/IoT.Starter.Api/blob/master/gpio-base/docker-compose)  
 [See more at this link](https://www.berthon.eu/2017/getting-docker-compose-on-raspberry-pi-arm-the-easy-way/)
 
 #### Net status
