@@ -483,6 +483,25 @@ Once identified, copy the needed conf to /etc/lirc/lircd.conf.d/ to allow the da
 	# https://techoverflow.net/blog/2013/10/22/docker-remove-all-images-and-containers/
 	# https://github.com/stuckless/sagetv-dockers/blob/master/nukeAllDockers.sh
 	docker rm $(docker ps -a -q)
+	
+	# Deletar images que começam por home 
+
+	$ docker rmi $(docker images | awk '$1 ~ /^home/ { print $3; }')
+
+	$ docker images
+	REPOSITORY                     TAG                                IMAGE ID            CREATED             SIZE
+	microsoft/dotnet               latest                             a7dd4972fc95        4 weeks ago         1.63GB
+	homeapi                        dev                                9b8cdcac2dd3        4 weeks ago         280MB
+	swaggerapi/swagger-editor      latest                             9fa164d6aa86        4 weeks ago         10.7MB
+
+	$ docker rmi $(docker images | awk '$1 ~ /^home/ { print $3; }')
+	Untagged: homeapi:dev
+	Deleted: sha256:9b8cdcac2dd31ea04cb00ac02e2fa964c8d7a5352ec6018353a1a6465f02f54a
+
+	$ docker images
+	REPOSITORY                     TAG                                IMAGE ID            CREATED             SIZE
+	microsoft/dotnet               latest                             a7dd4972fc95        4 weeks ago         1.63GB
+	swaggerapi/swagger-editor      latest                             9fa164d6aa86        4 weeks ago         10.7MB
 
 	# Delete all images except base: gpio | home-web
 	# docker rmi --force $(docker images -q)
