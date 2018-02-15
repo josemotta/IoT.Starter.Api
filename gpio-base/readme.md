@@ -570,3 +570,32 @@ This gets you the latest bleeding edge kernel/firmware.
 
 [See more at this link](https://github.com/Hexxeh/rpi-update)
 
+## CPU
+
+	root@lumi:~# du -hs
+	25M     .
+	root@lumi:~# df -h
+	Filesystem      Size  Used Avail Use% Mounted on
+	/dev/root        15G  4.1G  9.5G  30% /
+	devtmpfs        460M     0  460M   0% /dev
+	tmpfs           464M     0  464M   0% /dev/shm
+	tmpfs           464M   13M  452M   3% /run
+	tmpfs           5.0M  4.0K  5.0M   1% /run/lock
+	tmpfs           464M     0  464M   0% /sys/fs/cgroup
+	/dev/mmcblk0p1   42M   21M   21M  51% /boot
+	overlay          15G  4.1G  9.5G  30% /var/lib/docker/overlay2/b3ad79c1a5939e54876c5814e56a2431893fb167a51f026f9290317ede001939/merged
+	overlay          15G  4.1G  9.5G  30% /var/lib/docker/overlay2/6f3d880f0631e9f4b4b9f65660ce9b0a23938d9a6b422c14f854eda6adbc0009/merged
+	overlay          15G  4.1G  9.5G  30% /var/lib/docker/overlay2/a7357e0c763373e6cad1724eabedae46f5e5a179abe36a4deab60c95838f0f7c/merged
+	shm              64M  8.0K   64M   1% /var/lib/docker/containers/00fc3028480fd34eaf351d643bfee5b0dab999126fe8411674e6fab347ee56c8/shm
+	shm              64M     0   64M   0% /var/lib/docker/containers/d4c58be283877a290e947f72aa2465b3c2994bf6a4c7f28c6a2f5afc183ba02e/shm
+	shm              64M  8.0K   64M   1% /var/lib/docker/containers/ae97ff490db35b0a0d2c3ec53c87371a3c4ab6aa2075c67ed8d2370b7b658471/shm
+	tmpfs            93M     0   93M   0% /run/user/1000
+	root@lumi:~# free -h
+		      total        used        free      shared  buff/cache   available
+	Mem:           927M        157M        469M         58M        301M        662M
+	Swap:           99M          0B         99M
+	root@lumi:~# w
+	 19:27:59 up  1:38,  1 user,  load average: 0.02, 0.05, 0.01
+	USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+	pi       pts/0    192.168.20.104   17:50    0.00s  1.46s  0.40s sshd: pi [priv]
+
