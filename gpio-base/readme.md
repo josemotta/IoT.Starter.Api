@@ -484,9 +484,9 @@ Once identified, copy the needed conf to /etc/lirc/lircd.conf.d/ to allow the da
 	# https://github.com/stuckless/sagetv-dockers/blob/master/nukeAllDockers.sh
 	docker rm $(docker ps -a -q)
 	
-	# Deletar images que começam por home 
+	# Deletar images que começam por <none> 
 
-	$ docker rmi $(docker images | awk '$1 ~ /^home/ { print $3; }')
+	$ docker rmi $(docker images -a | awk '$1 ~ /^<none>/ { print $3; }')
 
 	$ docker images
 	REPOSITORY                     TAG                                IMAGE ID            CREATED             SIZE
