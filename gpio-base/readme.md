@@ -626,8 +626,121 @@ This gets you the latest bleeding edge kernel/firmware.
 		      total        used        free      shared  buff/cache   available
 	Mem:           927M        157M        469M         58M        301M        662M
 	Swap:           99M          0B         99M
+	
 	root@lumi:~# w
 	 19:27:59 up  1:38,  1 user,  load average: 0.02, 0.05, 0.01
 	USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
 	pi       pts/0    192.168.20.104   17:50    0.00s  1.46s  0.40s sshd: pi [priv]
+	
+	root@02ae40eb8d7d:/app# cat /proc/cpuinfo
+	processor       : 0
+	model name      : ARMv7 Processor rev 5 (v7l)
+	BogoMIPS        : 57.60
+	Features        : half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm
+	CPU implementer : 0x41
+	CPU architecture: 7
+	CPU variant     : 0x0
+	CPU part        : 0xc07
+	CPU revision    : 5
+
+	processor       : 1
+	model name      : ARMv7 Processor rev 5 (v7l)
+	BogoMIPS        : 57.60
+	Features        : half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm
+	CPU implementer : 0x41
+	CPU architecture: 7
+	CPU variant     : 0x0
+	CPU part        : 0xc07
+	CPU revision    : 5
+
+	processor       : 2
+	model name      : ARMv7 Processor rev 5 (v7l)
+	BogoMIPS        : 57.60
+	Features        : half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm
+	CPU implementer : 0x41
+	CPU architecture: 7
+	CPU variant     : 0x0
+	CPU part        : 0xc07
+	CPU revision    : 5
+
+	processor       : 3
+	model name      : ARMv7 Processor rev 5 (v7l)
+	BogoMIPS        : 57.60
+	Features        : half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm
+	CPU implementer : 0x41
+	CPU architecture: 7
+	CPU variant     : 0x0
+	CPU part        : 0xc07
+	CPU revision    : 5
+
+	Hardware        : BCM2835
+	Revision        : a21041
+	Serial          : 0000000097f7955f
+	
+	root@02ae40eb8d7d:/app# cat /proc/version
+	Linux version 4.9.59-v7+ (dc4@dc4-XPS13-9333) (gcc version 4.9.3 (crosstool-NG crosstool-ng-1.22.0-88-g8460611) ) #1047 SMP Sun Oct 29 12:19:23 GMT 2017
+	
+	root@02ae40eb8d7d:/app# cat /proc/partitions
+	major minor  #blocks  name
+
+	   1        0       4096 ram0
+	   1        1       4096 ram1
+	   1        2       4096 ram2
+	   1        3       4096 ram3
+	   1        4       4096 ram4
+	   1        5       4096 ram5
+	   1        6       4096 ram6
+	   1        7       4096 ram7
+	   1        8       4096 ram8
+	   1        9       4096 ram9
+	   1       10       4096 ram10
+	   1       11       4096 ram11
+	   1       12       4096 ram12
+	   1       13       4096 ram13
+	   1       14       4096 ram14
+	   1       15       4096 ram15
+	 179        0   15126528 mmcblk0
+	 179        1      42811 mmcblk0p1
+	 179        2   15079424 mmcblk0p2
+	   8        0       2048 sda
+	   
+	root@02ae40eb8d7d:/app# cat /proc/meminfo
+	MemTotal:         949580 kB
+	MemFree:          384372 kB
+	MemAvailable:     665316 kB
+	Buffers:           25456 kB
+	Cached:           353516 kB
+	SwapCached:            0 kB
+	Active:           329160 kB
+	Inactive:         194328 kB
+	Active(anon):     144920 kB
+	Inactive(anon):    59544 kB
+	Active(file):     184240 kB
+	Inactive(file):   134784 kB
+	Unevictable:           8 kB
+	Mlocked:               8 kB
+	SwapTotal:        102396 kB
+	SwapFree:         102396 kB
+	Dirty:                 0 kB
+	Writeback:             0 kB
+	AnonPages:        144520 kB
+	Mapped:           151192 kB
+	Shmem:             59952 kB
+	Slab:              27392 kB
+	SReclaimable:      13948 kB
+	SUnreclaim:        13444 kB
+	KernelStack:        2104 kB
+	PageTables:         2496 kB
+	NFS_Unstable:          0 kB
+	Bounce:                0 kB
+	WritebackTmp:          0 kB
+	CommitLimit:      577184 kB
+	Committed_AS:    1242504 kB
+	VmallocTotal:    1114112 kB
+	VmallocUsed:           0 kB
+	VmallocChunk:          0 kB
+	CmaTotal:           8192 kB
+	CmaFree:            6796 kB
+	
+	
 
